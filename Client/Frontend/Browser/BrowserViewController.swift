@@ -499,7 +499,7 @@ extension BrowserViewController: TabManagerDelegate {
 
         toolbar.updateBackStatus(selected?.canGoBack ?? false)
         toolbar.updateFowardStatus(selected?.canGoForward ?? false)
-        urlBar.updateProgressBar(Float(1))
+        urlBar.updateProgressBar(Float(0))
         urlBar.updateLoading(selected?.webView.loading ?? false)
 
         if let readerMode = selected?.getHelper(name: ReaderMode.name()) as? ReaderMode {
@@ -560,27 +560,12 @@ extension BrowserViewController: TabManagerDelegate {
 }
 
 extension BrowserViewController: UIWebViewDelegate {
-    func webViewDidStartLoad(webView: UIWebView) {
-        var url = NSURL(string: webView.stringByEvaluatingJavaScriptFromString("window.location.href")!)
-        
-        urlBar.updateURL(url)
-        toolbar.updateBackStatus(webView.canGoBack)
-        toolbar.updateFowardStatus(webView.canGoForward)
-        showToolbars(animated: false)
-        
-        if let url = url?.absoluteString {
-            profile.bookmarks.isBookmarked(url, success: { bookmarked in
-                self.toolbar.updateBookmarkStatus(bookmarked)
-                }, failure: { err in
-                    println("Error getting bookmark status: \(err)")
-            })
-        }
-        
-//        updateInContentHomePanel(url)
-    }
     
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         var url = request.URL
+        if (url.absoluteString == HomeURL) {
+            return true
+        }
         
         urlBar.updateURL(url)
         toolbar.updateBackStatus(webView.canGoBack)
