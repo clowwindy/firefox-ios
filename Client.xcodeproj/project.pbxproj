@@ -104,6 +104,30 @@
 		59A68D66379CFA85C4EAF00B /* TwoLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A68B1F857A8638598A63A0 /* TwoLineCell.swift */; };
 		59A68E0B4ABBF55E14819668 /* BookmarksPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A6839879D615FC1C0D71CE /* BookmarksPanel.swift */; };
 		59A68FD5260B8D520F890F4A /* ReaderPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A685F4EAD19EDEC854BCA4 /* ReaderPanel.swift */; };
+		629A00651AAB1C6800A17055 /* libshadowsocks-ui.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 62E6E9651AAAF06700AEBF16 /* libshadowsocks-ui.a */; };
+		629A00811AAB1CB800A17055 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D39FA16B1A83E17800EE869C /* CoreGraphics.framework */; };
+		629A00941AAB1CB900A17055 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 629A00821AAB1CB800A17055 /* AdSupport.framework */; };
+		629A00951AAB1CB900A17055 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 629A00831AAB1CB800A17055 /* AVFoundation.framework */; };
+		629A00961AAB1CB900A17055 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 629A00841AAB1CB800A17055 /* AVKit.framework */; };
+		629A00971AAB1CB900A17055 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 629A00851AAB1CB800A17055 /* CFNetwork.framework */; };
+		629A00981AAB1CB900A17055 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 629A00861AAB1CB800A17055 /* CoreData.framework */; };
+		629A00991AAB1CB900A17055 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 629A00871AAB1CB800A17055 /* CoreFoundation.framework */; };
+		629A009A1AAB1CB900A17055 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 629A00881AAB1CB800A17055 /* CoreTelephony.framework */; };
+		629A009B1AAB1CB900A17055 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 629A00891AAB1CB800A17055 /* CoreText.framework */; };
+		629A009C1AAB1CB900A17055 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 629A008A1AAB1CB800A17055 /* CoreVideo.framework */; };
+		629A009D1AAB1CB900A17055 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 629A008B1AAB1CB800A17055 /* EventKit.framework */; };
+		629A009E1AAB1CB900A17055 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 629A008C1AAB1CB900A17055 /* EventKitUI.framework */; };
+		629A009F1AAB1CB900A17055 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 629A008D1AAB1CB900A17055 /* iAd.framework */; };
+		629A00A01AAB1CB900A17055 /* libresolv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 629A008E1AAB1CB900A17055 /* libresolv.dylib */; };
+		629A00A11AAB1CB900A17055 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 629A008F1AAB1CB900A17055 /* MessageUI.framework */; };
+		629A00A21AAB1CB900A17055 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 629A00901AAB1CB900A17055 /* QuartzCore.framework */; };
+		629A00A31AAB1CB900A17055 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 629A00911AAB1CB900A17055 /* Social.framework */; };
+		629A00A41AAB1CB900A17055 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 629A00921AAB1CB900A17055 /* SystemConfiguration.framework */; };
+		629A00A51AAB1CB900A17055 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 629A00931AAB1CB900A17055 /* UIKit.framework */; };
+		629A00A71AAB1CC700A17055 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 629A00A61AAB1CC700A17055 /* libsqlite3.dylib */; };
+		629A00A91AAB1CCE00A17055 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 629A00A81AAB1CCE00A17055 /* StoreKit.framework */; };
+		629A00AB1AAB1CD700A17055 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 629A00AA1AAB1CD600A17055 /* AudioToolbox.framework */; };
+		629A00AD1AAB1CE100A17055 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 629A00AC1AAB1CE100A17055 /* CoreMedia.framework */; };
 		9B64C2A81A6451A800473AE3 /* LongPress.js in Resources */ = {isa = PBXBuildFile; fileRef = 9B64C2A71A6451A800473AE3 /* LongPress.js */; };
 		9B9AE2241A48B9A600AF2C23 /* LongPressGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9AE2231A48B9A500AF2C23 /* LongPressGestureRecognizer.swift */; };
 		D301AAEE1A3A55B70078DD1D /* TabTrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D301AAED1A3A55B70078DD1D /* TabTrayController.swift */; };
@@ -338,6 +362,20 @@
 			proxyType = 2;
 			remoteGlobalIDString = 6CA0A8071A75135D00AC539F;
 			remoteInfo = SecEncodeTransformTests;
+		};
+		629A00631AAB1C6800A17055 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 62E6E9491AAAF06600AEBF16 /* shadowsocks.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 620EE31F1AAB053200380EB8;
+			remoteInfo = "shadowsocks-app";
+		};
+		629A00AF1AAB1D9300A17055 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 62E6E9491AAAF06600AEBF16 /* shadowsocks.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 621571A416CF6BCB003D96B4;
+			remoteInfo = "shadowsocks-ui";
 		};
 		62E6E9641AAAF06700AEBF16 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -576,6 +614,28 @@
 		59A685F4EAD19EDEC854BCA4 /* ReaderPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReaderPanel.swift; sourceTree = "<group>"; };
 		59A68B1F857A8638598A63A0 /* TwoLineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoLineCell.swift; sourceTree = "<group>"; };
 		59A68CCB63E2A565CB03F832 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		629A00821AAB1CB800A17055 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		629A00831AAB1CB800A17055 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		629A00841AAB1CB800A17055 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		629A00851AAB1CB800A17055 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		629A00861AAB1CB800A17055 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		629A00871AAB1CB800A17055 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		629A00881AAB1CB800A17055 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		629A00891AAB1CB800A17055 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		629A008A1AAB1CB800A17055 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		629A008B1AAB1CB800A17055 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		629A008C1AAB1CB900A17055 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
+		629A008D1AAB1CB900A17055 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		629A008E1AAB1CB900A17055 /* libresolv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libresolv.dylib; path = usr/lib/libresolv.dylib; sourceTree = SDKROOT; };
+		629A008F1AAB1CB900A17055 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		629A00901AAB1CB900A17055 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		629A00911AAB1CB900A17055 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		629A00921AAB1CB900A17055 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		629A00931AAB1CB900A17055 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		629A00A61AAB1CC700A17055 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		629A00A81AAB1CCE00A17055 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		629A00AA1AAB1CD600A17055 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		629A00AC1AAB1CE100A17055 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		62E6E9491AAAF06600AEBF16 /* shadowsocks.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = shadowsocks.xcodeproj; path = "Shadowsocks-iOS/shadowsocks.xcodeproj"; sourceTree = "<group>"; };
 		9B64C2A71A6451A800473AE3 /* LongPress.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = LongPress.js; path = JavaScripts/LongPress.js; sourceTree = "<group>"; };
 		9B9AE2231A48B9A500AF2C23 /* LongPressGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LongPressGestureRecognizer.swift; sourceTree = "<group>"; };
@@ -694,9 +754,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B6544D31A96C5F0000DD202 /* libSDWebImage.a in Frameworks */,
-				D3589EF71A8D930000F28118 /* libz.dylib in Frameworks */,
+				629A00AD1AAB1CE100A17055 /* CoreMedia.framework in Frameworks */,
+				629A00AB1AAB1CD700A17055 /* AudioToolbox.framework in Frameworks */,
+				629A00A91AAB1CCE00A17055 /* StoreKit.framework in Frameworks */,
+				629A00A71AAB1CC700A17055 /* libsqlite3.dylib in Frameworks */,
+				629A00941AAB1CB900A17055 /* AdSupport.framework in Frameworks */,
+				629A00951AAB1CB900A17055 /* AVFoundation.framework in Frameworks */,
+				629A00961AAB1CB900A17055 /* AVKit.framework in Frameworks */,
+				629A00971AAB1CB900A17055 /* CFNetwork.framework in Frameworks */,
+				629A00981AAB1CB900A17055 /* CoreData.framework in Frameworks */,
+				629A00991AAB1CB900A17055 /* CoreFoundation.framework in Frameworks */,
+				629A009A1AAB1CB900A17055 /* CoreTelephony.framework in Frameworks */,
+				629A009B1AAB1CB900A17055 /* CoreText.framework in Frameworks */,
+				629A009C1AAB1CB900A17055 /* CoreVideo.framework in Frameworks */,
+				629A009D1AAB1CB900A17055 /* EventKit.framework in Frameworks */,
+				629A009E1AAB1CB900A17055 /* EventKitUI.framework in Frameworks */,
+				629A009F1AAB1CB900A17055 /* iAd.framework in Frameworks */,
+				629A00A01AAB1CB900A17055 /* libresolv.dylib in Frameworks */,
+				629A00A11AAB1CB900A17055 /* MessageUI.framework in Frameworks */,
+				629A00A21AAB1CB900A17055 /* QuartzCore.framework in Frameworks */,
+				629A00A31AAB1CB900A17055 /* Social.framework in Frameworks */,
+				629A00A41AAB1CB900A17055 /* SystemConfiguration.framework in Frameworks */,
+				629A00A51AAB1CB900A17055 /* UIKit.framework in Frameworks */,
+				629A00811AAB1CB800A17055 /* CoreGraphics.framework in Frameworks */,
 				0B8E0FF41A932BD500161DC3 /* ImageIO.framework in Frameworks */,
+				D3589EF71A8D930000F28118 /* libz.dylib in Frameworks */,
+				629A00651AAB1C6800A17055 /* libshadowsocks-ui.a in Frameworks */,
+				0B6544D31A96C5F0000DD202 /* libSDWebImage.a in Frameworks */,
 				28E5857A1A69E9DE00ACEB4F /* Storage.framework in Frameworks */,
 				E4A888161A95679500CDC337 /* FxA.framework in Frameworks */,
 			);
@@ -891,10 +975,40 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		629A00AE1AAB1D1E00A17055 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				629A00AC1AAB1CE100A17055 /* CoreMedia.framework */,
+				629A00AA1AAB1CD600A17055 /* AudioToolbox.framework */,
+				629A00A81AAB1CCE00A17055 /* StoreKit.framework */,
+				629A00A61AAB1CC700A17055 /* libsqlite3.dylib */,
+				629A00821AAB1CB800A17055 /* AdSupport.framework */,
+				629A00831AAB1CB800A17055 /* AVFoundation.framework */,
+				629A00841AAB1CB800A17055 /* AVKit.framework */,
+				629A00851AAB1CB800A17055 /* CFNetwork.framework */,
+				629A00861AAB1CB800A17055 /* CoreData.framework */,
+				629A00871AAB1CB800A17055 /* CoreFoundation.framework */,
+				629A00881AAB1CB800A17055 /* CoreTelephony.framework */,
+				629A00891AAB1CB800A17055 /* CoreText.framework */,
+				629A008A1AAB1CB800A17055 /* CoreVideo.framework */,
+				629A008B1AAB1CB800A17055 /* EventKit.framework */,
+				629A008C1AAB1CB900A17055 /* EventKitUI.framework */,
+				629A008D1AAB1CB900A17055 /* iAd.framework */,
+				629A008E1AAB1CB900A17055 /* libresolv.dylib */,
+				629A008F1AAB1CB900A17055 /* MessageUI.framework */,
+				629A00901AAB1CB900A17055 /* QuartzCore.framework */,
+				629A00911AAB1CB900A17055 /* Social.framework */,
+				629A00921AAB1CB900A17055 /* SystemConfiguration.framework */,
+				629A00931AAB1CB900A17055 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		62E6E94A1AAAF06600AEBF16 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				62E6E9651AAAF06700AEBF16 /* shadowsocks.app */,
+				62E6E9651AAAF06700AEBF16 /* libshadowsocks-ui.a */,
+				629A00641AAB1C6800A17055 /* shadowsocks.app */,
 				62E6E9671AAAF06700AEBF16 /* libshadowsocks.a */,
 				62E6E9691AAAF06700AEBF16 /* ShadowsocksX.app */,
 				62E6E96B1AAAF06700AEBF16 /* shadowsocks_sysconf */,
@@ -1089,13 +1203,14 @@
 		F84B21B51A090F8100AAB793 = {
 			isa = PBXGroup;
 			children = (
+				D39FA16B1A83E17800EE869C /* CoreGraphics.framework */,
+				0B8E0FF31A932BD500161DC3 /* ImageIO.framework */,
+				629A00AE1AAB1D1E00A17055 /* Frameworks */,
 				62E6E9491AAAF06600AEBF16 /* shadowsocks.xcodeproj */,
 				2F998FD41AA516380063E75D /* FirefoxAccountConfiguration.swift */,
 				2F44F9ED1A9D417500FD20CC /* Base32.xcodeproj */,
-				D39FA16B1A83E17800EE869C /* CoreGraphics.framework */,
 				D3FA77C31A44F9A80010CD32 /* Locales */,
 				E4CD9F191A6D9B7B00318571 /* libz.dylib */,
-				0B8E0FF31A932BD500161DC3 /* ImageIO.framework */,
 				28CE83E81A1D206D00576538 /* Client-Bridging-Header.h */,
 				D31FC2291A8D908800BAF7EC /* Alamofire.xcodeproj */,
 				28CE83CA1A1D1D5100576538 /* FxA.xcodeproj */,
@@ -1323,6 +1438,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				629A00B01AAB1D9300A17055 /* PBXTargetDependency */,
 				D31FC2481A8D910E00BAF7EC /* PBXTargetDependency */,
 				E4A888191A95679500CDC337 /* PBXTargetDependency */,
 			);
@@ -1597,10 +1713,17 @@
 			remoteRef = 2F44FA001A9D417600FD20CC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		62E6E9651AAAF06700AEBF16 /* shadowsocks.app */ = {
+		629A00641AAB1C6800A17055 /* shadowsocks.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
 			path = shadowsocks.app;
+			remoteRef = 629A00631AAB1C6800A17055 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		62E6E9651AAAF06700AEBF16 /* libshadowsocks-ui.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libshadowsocks-ui.a";
 			remoteRef = 62E6E9641AAAF06700AEBF16 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -2009,6 +2132,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		629A00B01AAB1D9300A17055 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "shadowsocks-ui";
+			targetProxy = 629A00AF1AAB1D9300A17055 /* PBXContainerItemProxy */;
+		};
 		D31FC2481A8D910E00BAF7EC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Alamofire iOS";

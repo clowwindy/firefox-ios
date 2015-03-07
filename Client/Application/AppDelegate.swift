@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var profile: Profile!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        Shadowsocks.globalShadowsocks()
         // Setup a web server that serves us static content. Do this early so that it is ready when the UI is presented.
         setupWebServer()
 
