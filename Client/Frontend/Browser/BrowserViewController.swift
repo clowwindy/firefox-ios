@@ -16,7 +16,7 @@ private let CancelString = NSLocalizedString("Cancel", comment: "Cancel button")
 private let KVOLoading = "loading"
 private let KVOEstimatedProgress = "estimatedProgress"
 
-private let HomeURL = "about:home"
+private let HomeURL = "about:blank"
 
 class BrowserViewController: UIViewController {
     private var urlBar: URLBarView!
@@ -302,6 +302,9 @@ extension BrowserViewController: URLBarDelegate {
 extension BrowserViewController: BrowserToolbarDelegate {
     func browserToolbarDidPressBack(browserToolbar: BrowserToolbar) {
         tabManager.selectedTab?.goBack()
+        if let tab = tabManager.selectedTab {
+            toolbar.updateBackStatus(tab.canGoBack)
+        }
     }
 
     func browserToolbarDidLongPressBack(browserToolbar: BrowserToolbar) {
@@ -313,6 +316,9 @@ extension BrowserViewController: BrowserToolbarDelegate {
 
     func browserToolbarDidPressForward(browserToolbar: BrowserToolbar) {
         tabManager.selectedTab?.goForward()
+        if let tab = tabManager.selectedTab {
+            toolbar.updateFowardStatus(tab.canGoForward)
+        }
     }
 
     func browserToolbarDidLongPressForward(browserToolbar: BrowserToolbar) {
@@ -484,16 +490,16 @@ extension BrowserViewController: TabManagerDelegate {
             webViewContainer.addSubview(wv)
         }
 
-//        previous?.webView.navigationDelegate = nil
+        previous?.webView.delegate = nil
         previous?.webView.scrollView.delegate = nil
-//        selected?.webView.navigationDelegate = self
+        selected?.webView.delegate = self
         selected?.webView.scrollView.delegate = self
         urlBar.updateURL(selected?.url)
         showToolbars(animated: false)
 
         toolbar.updateBackStatus(selected?.canGoBack ?? false)
         toolbar.updateFowardStatus(selected?.canGoForward ?? false)
-//        urlBar.updateProgressBar(Float(selected?.webView.estimatedProgress ?? 0))
+        urlBar.updateProgressBar(Float(1))
         urlBar.updateLoading(selected?.webView.loading ?? false)
 
         if let readerMode = selected?.getHelper(name: ReaderMode.name()) as? ReaderMode {
@@ -553,6 +559,75 @@ extension BrowserViewController: TabManagerDelegate {
     }
 }
 
+extension BrowserViewController: UIWebViewDelegate {
+    func webViewDidStartLoad(webView: UIWebView) {
+        var url = NSURL(string: webView.stringByEvaluatingJavaScriptFromString("window.location.href")!)
+        
+        urlBar.updateURL(url)
+        toolbar.updateBackStatus(webView.canGoBack)
+        toolbar.updateFowardStatus(webView.canGoForward)
+        showToolbars(animated: false)
+        
+        if let url = url?.absoluteString {
+            profile.bookmarks.isBookmarked(url, success: { bookmarked in
+                self.toolbar.updateBookmarkStatus(bookmarked)
+                }, failure: { err in
+                    println("Error getting bookmark status: \(err)")
+            })
+        }
+        
+//        updateInContentHomePanel(url)
+    }
+    
+    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        var url = request.URL
+        
+        urlBar.updateURL(url)
+        toolbar.updateBackStatus(webView.canGoBack)
+        toolbar.updateFowardStatus(webView.canGoForward)
+        showToolbars(animated: false)
+        
+        if let url = url.absoluteString {
+            profile.bookmarks.isBookmarked(url, success: { bookmarked in
+                self.toolbar.updateBookmarkStatus(bookmarked)
+                }, failure: { err in
+                    println("Error getting bookmark status: \(err)")
+            })
+        }
+        
+        updateInContentHomePanel(url)
+        return true
+    }
+
+    func webViewDidFinishLoad(webView: UIWebView) {
+        var url = NSURL(string: webView.stringByEvaluatingJavaScriptFromString("window.location.href")!)
+        let title = webView.stringByEvaluatingJavaScriptFromString("document.title")
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        var info = [NSObject: AnyObject]()
+        info["url"] = url
+        info["title"] = title
+        notificationCenter.postNotificationName("LocationChange", object: self, userInfo: info)
+        
+        UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, nil)
+        // must be followed by LayoutChanged, as ScreenChanged will make VoiceOver
+        // cursor land on the correct initial element, but if not followed by LayoutChanged,
+        // VoiceOver will sometimes be stuck on the element, not allowing user to move
+        // forward/backward. Strange, but LayoutChanged fixes that.
+        UIAccessibilityPostNotification(UIAccessibilityLayoutChangedNotification, nil)
+        
+        
+        if let url = url?.absoluteString {
+            profile.bookmarks.isBookmarked(url, success: { bookmarked in
+                self.toolbar.updateBookmarkStatus(bookmarked)
+                }, failure: { err in
+                    println("Error getting bookmark status: \(err)")
+            })
+        }
+        updateInContentHomePanel(url)
+
+    }
+}
+
 extension BrowserViewController: WKNavigationDelegate {
     func webView(webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         // If we are going to navigate to a new page, hide the reader mode button. Unless we
@@ -607,7 +682,7 @@ extension BrowserViewController: WKUIDelegate {
         return tab.webView
     }
 
-    func webView(webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: () -> Void) {
+    func webView(webView: UIWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: () -> Void) {
         tabManager.selectTab(tabManager.getTab(webView))
 
         // Show JavaScript alerts.
@@ -619,7 +694,7 @@ extension BrowserViewController: WKUIDelegate {
         presentViewController(alertController, animated: true, completion: nil)
     }
 
-    func webView(webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: (Bool) -> Void) {
+    func webView(webView: UIWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: (Bool) -> Void) {
         tabManager.selectTab(tabManager.getTab(webView))
 
         // Show JavaScript confirm dialogs.
@@ -634,7 +709,7 @@ extension BrowserViewController: WKUIDelegate {
         presentViewController(alertController, animated: true, completion: nil)
     }
 
-    func webView(webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo, completionHandler: (String!) -> Void) {
+    func webView(webView: UIWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo, completionHandler: (String!) -> Void) {
         tabManager.selectTab(tabManager.getTab(webView))
 
         // Show JavaScript input dialogs.
