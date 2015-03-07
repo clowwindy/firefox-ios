@@ -1,0 +1,3 @@
+[submodule "Shadowsocks-iOS"]
+	path = Shadowsocks-iOS
+	url = git@github.com:clowwindy/Shadowsocks-iOS.git
