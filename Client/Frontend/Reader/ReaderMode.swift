@@ -123,7 +123,7 @@ class ReaderMode: BrowserHelper, ReaderModeStyleViewControllerDelegate {
         if let path = NSBundle.mainBundle().pathForResource("Readability", ofType: "js") {
             if let source = NSString(contentsOfFile: path, encoding: NSUTF8StringEncoding, error: nil) {
                 var userScript = WKUserScript(source: source, injectionTime: WKUserScriptInjectionTime.AtDocumentEnd, forMainFrameOnly: true)
-                browser.webView.configuration.userContentController.addUserScript(userScript)
+                //browser.webView.configuration.userContentController.addUserScript(userScript)
             }
         }
 
@@ -131,7 +131,7 @@ class ReaderMode: BrowserHelper, ReaderModeStyleViewControllerDelegate {
         if let path = NSBundle.mainBundle().pathForResource("ReaderMode", ofType: "js") {
             if let source = NSString(contentsOfFile: path, encoding: NSUTF8StringEncoding, error: nil) {
                 var userScript = WKUserScript(source: source, injectionTime: WKUserScriptInjectionTime.AtDocumentEnd, forMainFrameOnly: true)
-                browser.webView.configuration.userContentController.addUserScript(userScript)
+                //browser.webView.configuration.userContentController.addUserScript(userScript)
             }
         }
     }
@@ -179,22 +179,22 @@ class ReaderMode: BrowserHelper, ReaderModeStyleViewControllerDelegate {
 
     func enableReaderMode() {
         if state == ReaderModeState.Available {
-            browser!.webView.evaluateJavaScript("\(ReaderModeNamespace).readerize()", completionHandler: { (object, error) -> Void in
-                println("DEBUG: mozReaderize object=\(object != nil) error=\(error)")
-                if error == nil && object != nil {
-                    if let readabilityResult = ReadabilityResult(object: object) {
-                        if let html = self.generateReaderContent(readabilityResult, initialStyle: self.style) {
-                            self.state = ReaderModeState.Active
-                            self.originalURL = self.browser!.webView.URL
-                            if let readerModeURL = ReaderMode.encodeURL(self.browser!.webView.URL) {
-                                self.browser!.webView.loadHTMLString(html, baseURL: readerModeURL)
-                            }
-                            return
-                        }
-                    }
-                }
-                // TODO What do we do in case of errors? At this point we actually did show the button, so the user does expect some feedback I think.
-            })
+//            browser!.webView.evaluateJavaScript("\(ReaderModeNamespace).readerize()", completionHandler: { (object, error) -> Void in
+//                println("DEBUG: mozReaderize object=\(object != nil) error=\(error)")
+//                if error == nil && object != nil {
+//                    if let readabilityResult = ReadabilityResult(object: object) {
+//                        if let html = self.generateReaderContent(readabilityResult, initialStyle: self.style) {
+//                            self.state = ReaderModeState.Active
+//                            self.originalURL = self.browser!.webView.URL
+//                            if let readerModeURL = ReaderMode.encodeURL(self.browser!.webView.URL) {
+//                                self.browser!.webView.loadHTMLString(html, baseURL: readerModeURL)
+//                            }
+//                            return
+//                        }
+//                    }
+//                }
+//                // TODO What do we do in case of errors? At this point we actually did show the button, so the user does expect some feedback I think.
+//            })
         }
     }
 
@@ -209,10 +209,10 @@ class ReaderMode: BrowserHelper, ReaderModeStyleViewControllerDelegate {
     var style: ReaderModeStyle = DefaultReaderModeStyle {
         didSet {
             if state == ReaderModeState.Active {
-                browser!.webView.evaluateJavaScript("\(ReaderModeNamespace).setStyle(\(style.encode()))", completionHandler: {
-                    (object, error) -> Void in
-                    return
-                })
+//                browser!.webView.evaluateJavaScript("\(ReaderModeNamespace).setStyle(\(style.encode()))", completionHandler: {
+//                    (object, error) -> Void in
+//                    return
+//                })
             }
         }
     }

@@ -484,16 +484,16 @@ extension BrowserViewController: TabManagerDelegate {
             webViewContainer.addSubview(wv)
         }
 
-        previous?.webView.navigationDelegate = nil
+//        previous?.webView.navigationDelegate = nil
         previous?.webView.scrollView.delegate = nil
-        selected?.webView.navigationDelegate = self
+//        selected?.webView.navigationDelegate = self
         selected?.webView.scrollView.delegate = self
         urlBar.updateURL(selected?.url)
         showToolbars(animated: false)
 
         toolbar.updateBackStatus(selected?.canGoBack ?? false)
         toolbar.updateFowardStatus(selected?.canGoForward ?? false)
-        urlBar.updateProgressBar(Float(selected?.webView.estimatedProgress ?? 0))
+//        urlBar.updateProgressBar(Float(selected?.webView.estimatedProgress ?? 0))
         urlBar.updateLoading(selected?.webView.loading ?? false)
 
         if let readerMode = selected?.getHelper(name: ReaderMode.name()) as? ReaderMode {
@@ -506,10 +506,10 @@ extension BrowserViewController: TabManagerDelegate {
     }
 
     func tabManager(tabManager: TabManager, didCreateTab tab: Browser) {
-        if let longPressGestureRecognizer = LongPressGestureRecognizer(webView: tab.webView) {
-            tab.webView.addGestureRecognizer(longPressGestureRecognizer)
-            longPressGestureRecognizer.longPressGestureDelegate = self
-        }
+//        if let longPressGestureRecognizer = LongPressGestureRecognizer(webView: tab.webView) {
+//            tab.webView.addGestureRecognizer(longPressGestureRecognizer)
+//            longPressGestureRecognizer.longPressGestureDelegate = self
+//        }
 
         if let readerMode = ReaderMode(browser: tab) {
             readerMode.delegate = self
@@ -541,7 +541,7 @@ extension BrowserViewController: TabManagerDelegate {
         }
         tab.webView.addObserver(self, forKeyPath: KVOEstimatedProgress, options: .New, context: nil)
         tab.webView.addObserver(self, forKeyPath: KVOLoading, options: .New, context: nil)
-        tab.webView.UIDelegate = self
+//        tab.webView.UIDelegate = self
     }
 
     func tabManager(tabManager: TabManager, didRemoveTab tab: Browser) {
@@ -600,7 +600,7 @@ extension BrowserViewController: WKNavigationDelegate {
 }
 
 extension BrowserViewController: WKUIDelegate {
-    func webView(webView: WKWebView, createWebViewWithConfiguration configuration: WKWebViewConfiguration, forNavigationAction navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+    func webView(webView: WKWebView, createWebViewWithConfiguration configuration: WKWebViewConfiguration, forNavigationAction navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> UIWebView? {
         // If the page uses window.open() or target="_blank", open the page in a new tab.
         // TODO: This doesn't work for window.open() without user action (bug 1124942).
         let tab = tabManager.addTab(request: navigationAction.request, configuration: configuration)

@@ -12,12 +12,12 @@ protocol BrowserHelper {
 }
 
 class Browser: NSObject, WKScriptMessageHandler {
-    let webView: WKWebView
+    let webView: UIWebView
 
     init(configuration: WKWebViewConfiguration) {
         configuration.userContentController = WKUserContentController()
-        webView = WKWebView(frame: CGRectZero, configuration: configuration)
-        webView.allowsBackForwardNavigationGestures = true
+        webView = UIWebView(frame: CGRectZero)
+        // webView.allowsBackForwardNavigationGestures = true
         webView.accessibilityLabel = NSLocalizedString("Web content", comment: "Accessibility label for the main web content view")
         webView.backgroundColor = UIColor.lightGrayColor()
 
@@ -29,22 +29,24 @@ class Browser: NSObject, WKScriptMessageHandler {
     }
 
     var backList: [WKBackForwardListItem]? {
-        return webView.backForwardList.backList as? [WKBackForwardListItem]
+        return nil //webView.backForwardList.backList as? [WKBackForwardListItem]
     }
 
     var forwardList: [WKBackForwardListItem]? {
-        return webView.backForwardList.forwardList as? [WKBackForwardListItem]
+        return nil //webView.backForwardList.forwardList as? [WKBackForwardListItem]
     }
 
     var title: String? {
-        if let title = webView.title {
-        	return title
-        }
-        return webView.URL?.absoluteString
+//        if let title = webView.title {
+//        	return title
+//        }
+        //return webView.URL?.absoluteString
+        return nil
     }
 
     var url: NSURL? {
-        return webView.URL?
+        //return webView.URL?
+        return nil
     }
 
     var canGoBack: Bool {
@@ -64,7 +66,7 @@ class Browser: NSObject, WKScriptMessageHandler {
     }
 
     func goToBackForwardListItem(item: WKBackForwardListItem) {
-        webView.goToBackForwardListItem(item)
+        // webView.goToBackForwardListItem(item)
     }
 
     func loadRequest(request: NSURLRequest) {
@@ -102,7 +104,7 @@ class Browser: NSObject, WKScriptMessageHandler {
         // If this helper handles script messages, then get the handler name and register it. The Browser
         // receives all messages and then dispatches them to the right BrowserHelper.
         if let scriptMessageHandlerName = helper.scriptMessageHandlerName() {
-            webView.configuration.userContentController.addScriptMessageHandler(self, name: scriptMessageHandlerName)
+            //webView.configuration.userContentController.addScriptMessageHandler(self, name: scriptMessageHandlerName)
         }
     }
 
