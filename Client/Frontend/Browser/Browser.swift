@@ -41,12 +41,16 @@ class Browser: NSObject, WKScriptMessageHandler {
 //        	return title
 //        }
         //return webView.URL?.absoluteString
-        return nil
+        if let title = webView.stringByEvaluatingJavaScriptFromString("document.title") {
+            return title
+        }
+        
+        return webView.stringByEvaluatingJavaScriptFromString("window.location.href")
     }
 
     var url: NSURL? {
         //return webView.URL?
-        return nil
+        return NSURL(string: webView.stringByEvaluatingJavaScriptFromString("window.location.href")!)
     }
 
     var canGoBack: Bool {
