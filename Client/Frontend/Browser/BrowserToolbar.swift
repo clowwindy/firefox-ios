@@ -21,7 +21,7 @@ private let ButtonHeight = 24
 class BrowserToolbar: UIView {
     weak var browserToolbarDelegate: BrowserToolbarDelegate?
 
-    private let shareButton: UIButton
+    let shareButton: UIButton
     private let bookmarkButton: UIButton
     private let forwardButton: UIButton
     private let backButton: UIButton

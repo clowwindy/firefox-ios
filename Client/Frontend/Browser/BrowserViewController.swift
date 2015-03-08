@@ -26,6 +26,8 @@ class BrowserViewController: UIViewController {
     private var searchController: SearchViewController?
     private var webViewContainer: UIView!
     private let uriFixup = URIFixup()
+    private var shareController: UIActivityViewController?
+    private var shareNavController: UINavigationController?
 
     var profile: Profile!
 
@@ -365,9 +367,20 @@ extension BrowserViewController: BrowserToolbarDelegate {
     func browserToolbarDidPressShare(browserToolbar: BrowserToolbar) {
         if let selected = tabManager.selectedTab {
             if let url = selected.url {
-                var shareController = UIActivityViewController(activityItems: [selected.title ?? url.absoluteString!, url], applicationActivities: nil)
-                shareController.modalTransitionStyle = .CoverVertical
-                presentViewController(shareController, animated: true, completion: nil)
+                shareController = UIActivityViewController(activityItems: [selected.title ?? url.absoluteString!, url], applicationActivities: nil)
+                if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+                    shareNavController = UINavigationController(rootViewController: shareController!)
+                    shareNavController!.modalPresentationStyle = .Popover
+                    let popover = shareNavController!.popoverPresentationController
+                    shareController!.preferredContentSize = CGSizeMake(500, 600)
+                    //popover!.sourceView = self.view
+                    popover!.sourceView = toolbar.shareButton
+                    
+                    self.presentViewController(shareNavController!, animated: true, completion: nil)
+                } else {
+                    shareController!.modalTransitionStyle = .CoverVertical
+                    presentViewController(shareController!, animated: true, completion: nil)
+                }
             }
         }
     }
