@@ -10,7 +10,12 @@ class SettingsTableViewController: UITableViewController {
     let ItemAccountStatus = 0
     let ItemAccountDisconnect = 1
     let SectionSearch = 1
-    let NumberOfSections = 2
+    let NumberOfSections = 3
+    let SectionShadowsocks = 2
+    let ItemServer = 0
+    let ItemQRCode = 1
+    let ItemHelp = 2
+    let ItemAbout = 3
 
     var profile: Profile!
 
@@ -42,6 +47,18 @@ class SettingsTableViewController: UITableViewController {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: nil)
             cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             cell.textLabel?.text = NSLocalizedString("Search", comment: "Settings")
+        } else if indexPath.section == SectionShadowsocks {
+            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: nil)
+            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+            if indexPath.item == ItemServer {
+                cell.textLabel?.text = NSLocalizedString("Server Settings", comment: "Settings")
+            } else if indexPath.item == ItemQRCode {
+                cell.textLabel?.text = NSLocalizedString("Config via QRCode", comment: "Settings")
+            } else if indexPath.item == ItemHelp {
+                cell.textLabel?.text = NSLocalizedString("Help", comment: "Settings")
+            } else if indexPath.item == ItemAbout {
+                cell.textLabel?.text = NSLocalizedString("About", comment: "Settings")
+            }
         } else {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: nil)
         }
@@ -60,13 +77,15 @@ class SettingsTableViewController: UITableViewController {
         if section == SectionAccount {
             if profile.getAccount() == nil {
                 // Just "Sign in".
-                return 1
+                return 0
             } else {
                 // Account state, and "Disconnect."
                 return 2
             }
         } else if section == SectionSearch {
             return 1
+        } else if section == SectionShadowsocks {
+            return 4
         } else {
             return 0
         }
@@ -77,6 +96,8 @@ class SettingsTableViewController: UITableViewController {
             return nil
         } else if section == SectionSearch {
             return NSLocalizedString("Search Settings", comment: "Title for search settings section.")
+        } else if section == SectionShadowsocks {
+            return NSLocalizedString("Shadowsocks", comment: "Title for Shadowsocks section.")
         } else {
             return nil
         }
@@ -117,6 +138,16 @@ class SettingsTableViewController: UITableViewController {
             let viewController = SearchSettingsTableViewController()
             viewController.model = profile.searchEngines
             navigationController?.pushViewController(viewController, animated: true)
+        } else if indexPath.section == SectionShadowsocks {
+            if indexPath.item == ItemServer {
+                self.navigationController?.pushViewController(Shadowsocks.globalShadowsocks().settingsViewController(), animated: true)
+            } else if indexPath.item == ItemQRCode {
+                self.navigationController?.pushViewController(Shadowsocks.globalShadowsocks().qrcodeViewController(), animated: true)
+            } else if indexPath.item == ItemHelp {
+                Shadowsocks.globalShadowsocks().showHelp()
+            } else if indexPath.item == ItemAbout {
+                self.navigationController?.pushViewController(Shadowsocks.globalShadowsocks().aboutViewController(), animated: true)
+            }
         }
         return nil
     }

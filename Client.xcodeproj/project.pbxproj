@@ -128,6 +128,7 @@
 		629A00A91AAB1CCE00A17055 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 629A00A81AAB1CCE00A17055 /* StoreKit.framework */; };
 		629A00AB1AAB1CD700A17055 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 629A00AA1AAB1CD600A17055 /* AudioToolbox.framework */; };
 		629A00AD1AAB1CE100A17055 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 629A00AC1AAB1CE100A17055 /* CoreMedia.framework */; };
+		62B1C6881AAC6D58004A225B /* about.txt in Resources */ = {isa = PBXBuildFile; fileRef = 62B1C6871AAC6D58004A225B /* about.txt */; };
 		9B64C2A81A6451A800473AE3 /* LongPress.js in Resources */ = {isa = PBXBuildFile; fileRef = 9B64C2A71A6451A800473AE3 /* LongPress.js */; };
 		9B9AE2241A48B9A600AF2C23 /* LongPressGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9AE2231A48B9A500AF2C23 /* LongPressGestureRecognizer.swift */; };
 		D301AAEE1A3A55B70078DD1D /* TabTrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D301AAED1A3A55B70078DD1D /* TabTrayController.swift */; };
@@ -636,6 +637,7 @@
 		629A00A81AAB1CCE00A17055 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		629A00AA1AAB1CD600A17055 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		629A00AC1AAB1CE100A17055 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		62B1C6871AAC6D58004A225B /* about.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = about.txt; path = "Shadowsocks-iOS/about.txt"; sourceTree = "<group>"; };
 		62E6E9491AAAF06600AEBF16 /* shadowsocks.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = shadowsocks.xcodeproj; path = "Shadowsocks-iOS/shadowsocks.xcodeproj"; sourceTree = "<group>"; };
 		9B64C2A71A6451A800473AE3 /* LongPress.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = LongPress.js; path = JavaScripts/LongPress.js; sourceTree = "<group>"; };
 		9B9AE2231A48B9A500AF2C23 /* LongPressGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LongPressGestureRecognizer.swift; sourceTree = "<group>"; };
@@ -1203,6 +1205,7 @@
 		F84B21B51A090F8100AAB793 = {
 			isa = PBXGroup;
 			children = (
+				62B1C6871AAC6D58004A225B /* about.txt */,
 				D39FA16B1A83E17800EE869C /* CoreGraphics.framework */,
 				0B8E0FF31A932BD500161DC3 /* ImageIO.framework */,
 				629A00AE1AAB1D1E00A17055 /* Frameworks */,
@@ -1885,6 +1888,7 @@
 				0BF42D391A7C0E8900889E28 /* Favicons.js in Resources */,
 				E4D6BEB91A0930EC00F538BD /* LaunchScreen.xib in Resources */,
 				2F44FB2D1A9D5D8500FD20CC /* FiraSans-BoldItalic.ttf in Resources */,
+				62B1C6881AAC6D58004A225B /* about.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
