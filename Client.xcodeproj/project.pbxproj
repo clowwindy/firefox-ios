@@ -129,6 +129,7 @@
 		629A00AB1AAB1CD700A17055 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 629A00AA1AAB1CD600A17055 /* AudioToolbox.framework */; };
 		629A00AD1AAB1CE100A17055 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 629A00AC1AAB1CE100A17055 /* CoreMedia.framework */; };
 		62B1C6881AAC6D58004A225B /* about.txt in Resources */ = {isa = PBXBuildFile; fileRef = 62B1C6871AAC6D58004A225B /* about.txt */; };
+		62E755B51AB58B0000915B3F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62E755B41AB58B0000915B3F /* Images.xcassets */; };
 		9B64C2A81A6451A800473AE3 /* LongPress.js in Resources */ = {isa = PBXBuildFile; fileRef = 9B64C2A71A6451A800473AE3 /* LongPress.js */; };
 		9B9AE2241A48B9A600AF2C23 /* LongPressGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9AE2231A48B9A500AF2C23 /* LongPressGestureRecognizer.swift */; };
 		D301AAEE1A3A55B70078DD1D /* TabTrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D301AAED1A3A55B70078DD1D /* TabTrayController.swift */; };
@@ -639,6 +640,7 @@
 		629A00AC1AAB1CE100A17055 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		62B1C6871AAC6D58004A225B /* about.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = about.txt; path = "Shadowsocks-iOS/about.txt"; sourceTree = "<group>"; };
 		62E6E9491AAAF06600AEBF16 /* shadowsocks.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = shadowsocks.xcodeproj; path = "Shadowsocks-iOS/shadowsocks.xcodeproj"; sourceTree = "<group>"; };
+		62E755B41AB58B0000915B3F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Shadowsocks-iOS/ShadowsocksX/Images.xcassets"; sourceTree = "<group>"; };
 		9B64C2A71A6451A800473AE3 /* LongPress.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = LongPress.js; path = JavaScripts/LongPress.js; sourceTree = "<group>"; };
 		9B9AE2231A48B9A500AF2C23 /* LongPressGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LongPressGestureRecognizer.swift; sourceTree = "<group>"; };
 		D301AAED1A3A55B70078DD1D /* TabTrayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabTrayController.swift; sourceTree = "<group>"; };
@@ -1209,6 +1211,7 @@
 				D39FA16B1A83E17800EE869C /* CoreGraphics.framework */,
 				0B8E0FF31A932BD500161DC3 /* ImageIO.framework */,
 				629A00AE1AAB1D1E00A17055 /* Frameworks */,
+				62E755B41AB58B0000915B3F /* Images.xcassets */,
 				62E6E9491AAAF06600AEBF16 /* shadowsocks.xcodeproj */,
 				2F998FD41AA516380063E75D /* FirefoxAccountConfiguration.swift */,
 				2F44F9ED1A9D417500FD20CC /* Base32.xcodeproj */,
@@ -1872,6 +1875,7 @@
 				D3FA77C41A44F9A80010CD32 /* Locales in Resources */,
 				E4CD9F5B1A71506C00318571 /* Reader.css in Resources */,
 				E4B7B7611A793CF20022C5E0 /* CharisSILB.ttf in Resources */,
+				62E755B51AB58B0000915B3F /* Images.xcassets in Resources */,
 				E4B7B7621A793CF20022C5E0 /* CharisSILBI.ttf in Resources */,
 				E4B7B7861A793CF20022C5E0 /* FiraSans-UltraLight.ttf in Resources */,
 				2F44FB2C1A9D5D8500FD20CC /* Home.xcassets in Resources */,
@@ -2262,7 +2266,7 @@
 		E421F28C1A8D2BF300971276 /* FennecNightly */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2452,7 +2456,7 @@
 		F84B21DE1A090F8100AAB793 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2479,7 +2483,7 @@
 		F84B21DF1A090F8100AAB793 /* FennecAurora */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
