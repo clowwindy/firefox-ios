@@ -14,6 +14,7 @@ private let DefaultImage = "defaultFavicon"
 
 class TopSitesPanel: UIViewController, UICollectionViewDelegate, HomePanel {
     weak var homePanelDelegate: HomePanelDelegate?
+    var publicServerAdView: UIView?
     var collection: UICollectionView!
     var dataSource: TopSitesDataSource!
     let layout = TopSitesLayout()
@@ -46,9 +47,26 @@ class TopSitesPanel: UIViewController, UICollectionViewDelegate, HomePanel {
         collection.registerClass(TopSitesRow.self, forCellWithReuseIdentifier: RowIdentifier)
         collection.keyboardDismissMode = .OnDrag
         view.addSubview(collection)
-        collection.snp_makeConstraints { make in
-            make.edges.equalTo(self.view)
-            return
+      
+        publicServerAdView = Shadowsocks.globalShadowsocks().publicServerAdView()
+        if let adView = publicServerAdView {
+            view.addSubview(adView)
+            adView.snp_makeConstraints { make in
+                make.top.equalTo(self.view.snp_top)
+                return
+            }
+            collection.snp_makeConstraints { make in
+                make.top.equalTo(adView.snp_bottom)
+                make.left.equalTo(self.view)
+                make.right.equalTo(self.view)
+                make.bottom.equalTo(self.view)
+                return
+            }
+        } else {
+            collection.snp_makeConstraints { make in
+                make.edges.equalTo(self.view)
+                return
+            }
         }
     }
 
