@@ -216,7 +216,11 @@ class TopSitesDataSource: NSObject, UICollectionViewDataSource {
         if indexPath.item < 6 {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ThumbnailIdentifier, forIndexPath: indexPath) as ThumbnailCell
             cell.textLabel.text = site.title
-            cell.imageView.image = UIImage(named: DefaultImage)
+            if let icon = site.icon? {
+                cell.imageView.sd_setImageWithURL(NSURL(string: icon.url)!)
+            } else {
+                cell.imageView.image = UIImage(named: DefaultImage)
+            }
             cell.imageView.contentMode = UIViewContentMode.Center
             return cell
         }

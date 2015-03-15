@@ -27,6 +27,8 @@ class ThumbnailCell: UICollectionViewCell {
             make.height.equalTo(26)
         })
 
+        imageView.contentMode = .ScaleAspectFit
+        imageView.clipsToBounds = true
         imageView.layer.borderColor = UIColor.lightGrayColor().CGColor
         imageView.layer.borderWidth = 1
         imageView.snp_makeConstraints({ make in
