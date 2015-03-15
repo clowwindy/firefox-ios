@@ -4,7 +4,7 @@
 
 import Foundation
 
-let DefaultSearchEngineName = "Yahoo"
+let DefaultSearchEngineName = "Google"
 
 private let OrderedEngineNames = "search.orderedEngineNames"
 private let DisabledEngineNames = "search.disabledEngineNames"
