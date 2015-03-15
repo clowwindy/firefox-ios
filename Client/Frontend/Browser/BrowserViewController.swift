@@ -622,7 +622,12 @@ extension BrowserViewController: UIWebViewDelegate {
             })
         }
         updateInContentHomePanel(url)
-
+        
+        if let tab = tabManager.getTab(webView) {
+            if let faviconsManager = tab.getHelper(name: "FaviconsManager") as? FaviconManager {
+                faviconsManager.updateFavicon()
+            }
+        }
     }
 }
 

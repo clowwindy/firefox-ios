@@ -39,9 +39,9 @@
   }
 }
 
-window.addEventListener("load", function() {
-  var favicons = Favicons.getAll();
-  webkit.messageHandlers.faviconsMessageHandler.postMessage(favicons);
-});
-
+//window.addEventListener("load", function() {
+//  var favicons = Favicons.getAll();
+//  webkit.messageHandlers.faviconsMessageHandler.postMessage(favicons);
+//});
+    return JSON.stringify(Favicons.getAll());
 })()
