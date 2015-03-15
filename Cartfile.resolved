@@ -1,7 +1,7 @@
 github "Alamofire/Alamofire" "1.1.4"
 github "norio-nomura/Base32" "v0.2.2"
 github "swisspol/GCDWebServer" "3.2.2"
-github "kif-framework/KIF" "v3.1.2"
+github "kif-framework/KIF" "v3.2.0"
 github "rs/SDWebImage" "3.7.1"
 github "st3fan/SWXMLHash" "0.6.4"
 github "Masonry/Snap" "0.0.6"
