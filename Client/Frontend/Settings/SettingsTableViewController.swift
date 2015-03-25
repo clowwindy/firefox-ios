@@ -176,7 +176,7 @@ class SettingsTableViewController: UITableViewController {
                 cell.accessoryType = UITableViewCellAccessoryType.None
             }
         } else {
-            cell.textLabel?.text = NSLocalizedString("Sign in", comment: "Settings")
+            cell.textLabel?.text = NSLocalizedString("", comment: "Settings")
         }
     }
 

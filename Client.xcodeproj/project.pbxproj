@@ -103,6 +103,8 @@
 		59A68D66379CFA85C4EAF00B /* TwoLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A68B1F857A8638598A63A0 /* TwoLineCell.swift */; };
 		59A68E0B4ABBF55E14819668 /* BookmarksPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A6839879D615FC1C0D71CE /* BookmarksPanel.swift */; };
 		59A68FD5260B8D520F890F4A /* ReaderPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A685F4EAD19EDEC854BCA4 /* ReaderPanel.swift */; };
+		626622271AC2EB6300C806EE /* proxy_ios.pac.gz in Resources */ = {isa = PBXBuildFile; fileRef = 626622261AC2EB6300C806EE /* proxy_ios.pac.gz */; };
+		6266222B1AC2ECA900C806EE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6266222A1AC2ECA900C806EE /* Localizable.strings */; };
 		629A00651AAB1C6800A17055 /* libshadowsocks-ui.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 62E6E9651AAAF06700AEBF16 /* libshadowsocks-ui.a */; };
 		629A00811AAB1CB800A17055 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D39FA16B1A83E17800EE869C /* CoreGraphics.framework */; };
 		629A00941AAB1CB900A17055 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 629A00821AAB1CB800A17055 /* AdSupport.framework */; };
@@ -605,6 +607,10 @@
 		59A685F4EAD19EDEC854BCA4 /* ReaderPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReaderPanel.swift; sourceTree = "<group>"; };
 		59A68B1F857A8638598A63A0 /* TwoLineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoLineCell.swift; sourceTree = "<group>"; };
 		59A68CCB63E2A565CB03F832 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		626622091AC2EAFF00C806EE /* proxy.pac.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; name = proxy.pac.gz; path = "Shadowsocks-iOS/proxy.pac.gz"; sourceTree = "<group>"; };
+		626622261AC2EB6300C806EE /* proxy_ios.pac.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; name = proxy_ios.pac.gz; path = "Shadowsocks-iOS/proxy_ios.pac.gz"; sourceTree = "<group>"; };
+		626622281AC2ECA900C806EE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		626622291AC2ECA900C806EE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		629A00821AAB1CB800A17055 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		629A00831AAB1CB800A17055 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		629A00841AAB1CB800A17055 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
@@ -1196,6 +1202,9 @@
 		F84B21B51A090F8100AAB793 = {
 			isa = PBXGroup;
 			children = (
+				6266222A1AC2ECA900C806EE /* Localizable.strings */,
+				626622261AC2EB6300C806EE /* proxy_ios.pac.gz */,
+				626622091AC2EAFF00C806EE /* proxy.pac.gz */,
 				62B1C6871AAC6D58004A225B /* about.txt */,
 				D39FA16B1A83E17800EE869C /* CoreGraphics.framework */,
 				0B8E0FF31A932BD500161DC3 /* ImageIO.framework */,
@@ -1871,6 +1880,8 @@
 				0BF42D391A7C0E8900889E28 /* Favicons.js in Resources */,
 				E4D6BEB91A0930EC00F538BD /* LaunchScreen.xib in Resources */,
 				62B1C6881AAC6D58004A225B /* about.txt in Resources */,
+				626622271AC2EB6300C806EE /* proxy_ios.pac.gz in Resources */,
+				6266222B1AC2ECA900C806EE /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2144,6 +2155,19 @@
 			targetProxy = F84B21D41A090F8100AAB793 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6266222A1AC2ECA900C806EE /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				626622281AC2ECA900C806EE /* en */,
+				626622291AC2ECA900C806EE /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			path = "Shadowsocks-iOS/ShadowWeb";
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D349D7381A85977700229905 /* FennecAurora */ = {
