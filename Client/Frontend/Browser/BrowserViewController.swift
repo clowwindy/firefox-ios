@@ -579,8 +579,9 @@ extension BrowserViewController: UIWebViewDelegate {
         if (url.absoluteString == HomeURL) {
             return true
         }
-        
-        urlBar.updateURL(url)
+        if (navigationType != .Other) {
+            urlBar.updateURL(url)
+        }
         toolbar.updateBackStatus(webView.canGoBack)
         toolbar.updateFowardStatus(webView.canGoForward)
         showToolbars(animated: false)
@@ -593,11 +594,19 @@ extension BrowserViewController: UIWebViewDelegate {
             })
         }
         
-        updateInContentHomePanel(url)
+        //updateInContentHomePanel(url)
         return true
+    }
+    
+    func webViewDidStartLoad(webView: UIWebView) {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        let progress = Float(Float(arc4random_uniform(100)) * 0.01 * 0.3 + 0.3)
+        urlBar.updateProgressBar(progress)
     }
 
     func webViewDidFinishLoad(webView: UIWebView) {
+        urlBar.updateProgressBar(Float(1.0))
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         var url = NSURL(string: webView.stringByEvaluatingJavaScriptFromString("window.location.href")!)
         let title = webView.stringByEvaluatingJavaScriptFromString("document.title")
         let notificationCenter = NSNotificationCenter.defaultCenter()
@@ -628,6 +637,7 @@ extension BrowserViewController: UIWebViewDelegate {
                 faviconsManager.updateFavicon()
             }
         }
+        urlBar.updateURL(url)
     }
 }
 
