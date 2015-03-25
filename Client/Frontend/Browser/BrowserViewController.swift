@@ -594,7 +594,7 @@ extension BrowserViewController: UIWebViewDelegate {
             })
         }
         
-        //updateInContentHomePanel(url)
+        updateInContentHomePanel(url)
         return true
     }
     
