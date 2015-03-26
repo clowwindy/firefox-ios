@@ -6,16 +6,18 @@ import Base32
 import UIKit
 
 class SettingsTableViewController: UITableViewController {
-    let SectionAccount = 0
+    let SectionAccount = 3
     let ItemAccountStatus = 0
     let ItemAccountDisconnect = 1
-    let SectionSearch = 1
+    let SectionSearch = 0
     let NumberOfSections = 3
-    let SectionShadowsocks = 2
+    let SectionShadowsocks = 1
     let ItemServer = 0
     let ItemQRCode = 1
     let ItemHelp = 2
     let ItemAbout = 3
+    let SectionPrivacy = 2
+    let ClearHistory = 0
 
     var profile: Profile!
 
@@ -63,6 +65,9 @@ class SettingsTableViewController: UITableViewController {
             } else if indexPath.item == ItemAbout {
                 cell.textLabel?.text = NSLocalizedString("About", comment: "Settings")
             }
+        } else if indexPath.section == SectionPrivacy {
+            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: nil)
+            cell.textLabel?.text = NSLocalizedString("Clear History", comment: "Clear History")
         } else {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: nil)
         }
@@ -90,6 +95,8 @@ class SettingsTableViewController: UITableViewController {
             return 1
         } else if section == SectionShadowsocks {
             return 4
+        } else if section == SectionPrivacy {
+            return 1
         } else {
             return 0
         }
@@ -102,6 +109,8 @@ class SettingsTableViewController: UITableViewController {
             return NSLocalizedString("Search Settings", comment: "Title for search settings section.")
         } else if section == SectionShadowsocks {
             return NSLocalizedString("Shadowsocks", comment: "Title for Shadowsocks section.")
+        } else if section == SectionPrivacy {
+            return NSLocalizedString("Privacy", comment: "Title for Privacy section.")
         } else {
             return nil
         }
@@ -152,6 +161,10 @@ class SettingsTableViewController: UITableViewController {
             } else if indexPath.item == ItemAbout {
                 self.navigationController?.pushViewController(Shadowsocks.globalShadowsocks().aboutViewController(), animated: true)
             }
+        } else if indexPath.section == SectionPrivacy {
+            profile.history.clear({ (success) -> Void in
+                UIAlertView(title: nil, message: NSLocalizedString("Cleared", comment: "Cleared"), delegate: nil, cancelButtonTitle: "OK").show()
+            })
         }
         return nil
     }

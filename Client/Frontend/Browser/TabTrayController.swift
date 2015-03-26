@@ -134,7 +134,7 @@ class TabTrayController: UIViewController, UITabBarDelegate, UITableViewDelegate
 
         let settingsItem = UIBarButtonItem(title: "\u{2699}", style: .Plain, target: self, action: "SELdidClickSettingsItem")
         settingsItem.accessibilityLabel = NSLocalizedString("Settings", comment: "Accessibility label for the Settings button in the Tab Tray.")
-        let signinItem = UIBarButtonItem(title: NSLocalizedString("Sign in", comment: "Button that leads to Sign in section of the Settings sheet."),
+        let signinItem = UIBarButtonItem(title: NSLocalizedString("", comment: "Button that leads to Sign in section of the Settings sheet."),
             style: .Plain, target: self, action: "SELdidClickDone")
         signinItem.enabled = false
         let addTabItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "SELdidClickAddTab")

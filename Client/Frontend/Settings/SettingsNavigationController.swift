@@ -10,7 +10,7 @@ class SettingsNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let rootViewController = SettingsTableViewController()
+        let rootViewController = SettingsTableViewController(style: .Grouped)
         rootViewController.profile = profile
         self.pushViewController(rootViewController, animated: false)
     }
