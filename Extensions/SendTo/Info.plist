@@ -44,8 +44,6 @@
 		<string>ActionViewController</string>
 	</dict>
 	<key>UIAppFonts</key>
-	<array>
-		<string>FiraSans-Regular.ttf</string>
-	</array>
+	<array/>
 </dict>
 </plist>
