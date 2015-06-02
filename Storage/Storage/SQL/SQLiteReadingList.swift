@@ -21,7 +21,7 @@ public class SQLiteReadingList: ReadingList {
 
     public func clear(complete: (success: Bool) -> Void) {
         var err: NSError? = nil
-        db.delete(&err) { connection, err in
+        db.delete(&err) { (connection, inout err: NSError?) -> Int in
             return self.table.delete(connection, item: nil, err: &err)
         }
         dispatch_async(dispatch_get_main_queue()) {
@@ -46,7 +46,7 @@ public class SQLiteReadingList: ReadingList {
 
     public func add(#item: ReadingListItem, complete: (success: Bool) -> Void) {
         var err: NSError? = nil
-        let inserted = db.insert(&err) { connection, err in
+        let inserted = db.insert(&err) { (connection, inout err: NSError?) -> Int in
             return self.table.insert(connection, item: item, err: &err)
         }
 

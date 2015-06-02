@@ -43,7 +43,7 @@ class FaviconManager : BrowserHelper {
                 let manager = SDWebImageManager.sharedManager()
                 if let url = browser?.url?.absoluteString {
                     let site = Site(url: url, title: "")
-                    if let json = browser?.webView.stringByEvaluatingJavaScriptFromString(source) {
+                    if let json = browser?.webView.stringByEvaluatingJavaScriptFromString(source as String) {
                         if let icons = JSON.parse(json).asDictionary {
 //                            if let icons = data as? [String: Int] {
                                 for (iconUrl, iconType) in icons {

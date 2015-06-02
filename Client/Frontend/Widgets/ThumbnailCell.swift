@@ -9,10 +9,6 @@ class ThumbnailCell: UICollectionViewCell {
     let imageView = UIImageView()
     let margin = 10
 
-    override init() {
-        super.init()
-    }
-
     override init(frame: CGRect) {
         super.init(frame: frame)
 

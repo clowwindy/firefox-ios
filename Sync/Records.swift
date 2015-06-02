@@ -44,7 +44,7 @@ public class EnvelopeJSON : JSON {
         }
 
         if (self["modified"].isDouble) {
-            return UInt64(1000 * (self["modified"].asDouble? ?? 0.0))
+            return UInt64(1000 * (self["modified"].asDouble ?? 0.0))
         }
 
         return 0

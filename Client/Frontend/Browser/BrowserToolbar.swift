@@ -25,46 +25,8 @@ class BrowserToolbar: UIView {
     private let bookmarkButton: UIButton
     private let forwardButton: UIButton
     private let backButton: UIButton
-    private let longPressGestureBackButton: UILongPressGestureRecognizer!
-    private let longPressGestureForwardButton: UILongPressGestureRecognizer!
-    private let longPressGestureBookmarkButton: UILongPressGestureRecognizer!
 
-    override init() {
-        backButton = UIButton()
-        forwardButton = UIButton()
-        shareButton = UIButton()
-        bookmarkButton = UIButton()
-
-        super.init()
-
-        backButton.setImage(UIImage(named: "back"), forState: .Normal)
-        backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
-        backButton.accessibilityHint = NSLocalizedString("Double tap and hold to open history", comment: "")
-        longPressGestureBackButton = UILongPressGestureRecognizer(target: self, action: "SELdidLongPressBack:")
-        backButton.addGestureRecognizer(longPressGestureBackButton)
-        backButton.addTarget(self, action: "SELdidClickBack", forControlEvents: UIControlEvents.TouchUpInside)
-
-        forwardButton.setImage(UIImage(named: "forward"), forState: .Normal)
-        forwardButton.accessibilityLabel = NSLocalizedString("Forward", comment: "")
-        forwardButton.accessibilityHint = NSLocalizedString("Double tap and hold to open history", comment: "")
-        longPressGestureForwardButton = UILongPressGestureRecognizer(target: self, action: "SELdidLongPressForward:")
-        forwardButton.addGestureRecognizer(longPressGestureForwardButton)
-        forwardButton.addTarget(self, action: "SELdidClickForward", forControlEvents: UIControlEvents.TouchUpInside)
-
-        shareButton.setImage(UIImage(named: "send"), forState: .Normal)
-        shareButton.addTarget(self, action: "SELdidClickShare", forControlEvents: UIControlEvents.TouchUpInside)
-
-        bookmarkButton.setImage(UIImage(named: "bookmark"), forState: .Normal)
-        longPressGestureBookmarkButton = UILongPressGestureRecognizer(target: self, action: "SELdidLongPressBookmark:")
-        bookmarkButton.addGestureRecognizer(longPressGestureBookmarkButton)
-        bookmarkButton.addTarget(self, action: "SELdidClickBookmark", forControlEvents: UIControlEvents.TouchUpInside)
-
-        addButtons(backButton, forwardButton, shareButton, bookmarkButton)
-    }
-
-    // This has to be here since init() calls it
-    override private init(frame: CGRect) {
-        // And these have to be initialized in here or the compiler will get angry
+    override init(frame: CGRect) {
         backButton = UIButton()
         forwardButton = UIButton()
         shareButton = UIButton()
@@ -72,8 +34,23 @@ class BrowserToolbar: UIView {
 
         super.init(frame: frame)
 
-        longPressGestureBackButton = UILongPressGestureRecognizer(target: self, action: "SELdidLongPressBack:")
-        longPressGestureForwardButton = UILongPressGestureRecognizer(target: self, action: "SELdidLongPressForward:")
+        backButton.setImage(UIImage(named: "back"), forState: .Normal)
+        backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
+        backButton.accessibilityHint = NSLocalizedString("Double tap and hold to open history", comment: "")
+        backButton.addTarget(self, action: "SELdidClickBack", forControlEvents: UIControlEvents.TouchUpInside)
+
+        forwardButton.setImage(UIImage(named: "forward"), forState: .Normal)
+        forwardButton.accessibilityLabel = NSLocalizedString("Forward", comment: "")
+        forwardButton.accessibilityHint = NSLocalizedString("Double tap and hold to open history", comment: "")
+        forwardButton.addTarget(self, action: "SELdidClickForward", forControlEvents: UIControlEvents.TouchUpInside)
+
+        shareButton.setImage(UIImage(named: "send"), forState: .Normal)
+        shareButton.addTarget(self, action: "SELdidClickShare", forControlEvents: UIControlEvents.TouchUpInside)
+
+        bookmarkButton.setImage(UIImage(named: "bookmark"), forState: .Normal)
+        bookmarkButton.addTarget(self, action: "SELdidClickBookmark", forControlEvents: UIControlEvents.TouchUpInside)
+
+        addButtons(backButton, forwardButton, shareButton, bookmarkButton)
     }
 
     required init(coder aDecoder: NSCoder) {

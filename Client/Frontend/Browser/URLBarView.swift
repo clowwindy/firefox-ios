@@ -30,11 +30,6 @@ class URLBarView: UIView, BrowserLocationViewDelegate, UITextFieldDelegate {
     private var progressBar: UIProgressView!
     private var cancelButton: UIButton!
 
-    override init() {
-        // super.init() calls init(frame: CGRect)
-        super.init()
-    }
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         initViews()

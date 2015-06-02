@@ -71,12 +71,12 @@ class FirefoxAccount {
 
     private class func fromDictionaryV1(dictionary: [String: AnyObject]) -> FirefoxAccount? {
         // TODO: throughout, even a semblance of error checking and input validation.
-        let email = dictionary["email"] as String
-        let uid = dictionary["uid"] as String
-        let authEndpoint = NSURL(string: dictionary["authEndpoint"] as String)!
-        let contentEndpoint = NSURL(string: dictionary["contentEndpoint"] as String)!
-        let oauthEndpoint = NSURL(string: dictionary["oauthEndpoint"] as String)!
-        let state = FirefoxAccountState.fromDictionary(dictionary["state"] as [String: AnyObject])
+        let email = dictionary["email"] as! String
+        let uid = dictionary["uid"] as! String
+        let authEndpoint = NSURL(string: dictionary["authEndpoint"] as! String)!
+        let contentEndpoint = NSURL(string: dictionary["contentEndpoint"] as! String)!
+        let oauthEndpoint = NSURL(string: dictionary["oauthEndpoint"] as! String)!
+        let state = FirefoxAccountState.fromDictionary(dictionary["state"] as! [String: AnyObject])
             ?? FirefoxAccountState.Separated()
         return FirefoxAccount(email: email, uid: uid,
                 authEndpoint: authEndpoint, contentEndpoint: contentEndpoint, oauthEndpoint: oauthEndpoint,

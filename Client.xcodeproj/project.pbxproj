@@ -33,7 +33,6 @@
 		0BF9F8BC1A3A82CA0049A0FA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F84B21EF1A0910F600AAB793 /* Images.xcassets */; };
 		282DA4691A68C13400A406E2 /* Clients.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42CCDE21A23A6F900B794D3 /* Clients.swift */; };
 		282DA4731A68C1E700A406E2 /* OpenSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FA77831A43B2CE0010CD32 /* OpenSearch.swift */; };
-		282DA4811A697EB100A406E2 /* RestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34DC8521A16C40C00D49B7B /* RestAPI.swift */; };
 		285CEE4B1A69EAF600CC1228 /* Storage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 282DA4BA1A699E0400A406E2 /* Storage.framework */; };
 		285CEE4F1A69EAFD00CC1228 /* Storage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 282DA4BA1A699E0400A406E2 /* Storage.framework */; };
 		28C077981A3B064000834FE5 /* CryptoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C077971A3B064000834FE5 /* CryptoTests.swift */; };
@@ -145,7 +144,6 @@
 		D31A0FC81A65D6D000DC8C7E /* SearchSuggestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31A0FC61A65D6D000DC8C7E /* SearchSuggestClient.swift */; };
 		D31FC24C1A8D923000BAF7EC /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = D31FC2311A8D908900BAF7EC /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D34DC8531A16C40C00D49B7B /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34DC84D1A16C40C00D49B7B /* Profile.swift */; };
-		D34DC8581A16C40C00D49B7B /* RestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34DC8521A16C40C00D49B7B /* RestAPI.swift */; };
 		D35275161AA8D13B00E9C906 /* ColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35275151AA8D13B00E9C906 /* ColorUtils.swift */; };
 		D35275171AA8D13B00E9C906 /* ColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35275151AA8D13B00E9C906 /* ColorUtils.swift */; };
 		D3589EF71A8D930000F28118 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E4CD9F191A6D9B7B00318571 /* libz.dylib */; };
@@ -220,11 +218,9 @@
 		E40FAB0C1A7ABB77009CB80D /* WebServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40FAB0B1A7ABB77009CB80D /* WebServer.swift */; };
 		E418D0D91A251B3200CAE47A /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34DC84D1A16C40C00D49B7B /* Profile.swift */; };
 		E418D0DC1A251B3200CAE47A /* Clients.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42CCDE21A23A6F900B794D3 /* Clients.swift */; };
-		E418D0DF1A251B3200CAE47A /* RestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34DC8521A16C40C00D49B7B /* RestAPI.swift */; };
 		E41A7D4B1A1BE04500245963 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41A7D4A1A1BE04500245963 /* InitialViewController.swift */; };
 		E42CCDE31A23A6F900B794D3 /* Clients.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42CCDE21A23A6F900B794D3 /* Clients.swift */; };
 		E42CCDE81A23A73D00B794D3 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34DC84D1A16C40C00D49B7B /* Profile.swift */; };
-		E42CCDEA1A23A74400B794D3 /* RestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34DC8521A16C40C00D49B7B /* RestAPI.swift */; };
 		E42CCDEE1A23C2C600B794D3 /* Clients.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42CCDE21A23A6F900B794D3 /* Clients.swift */; };
 		E42CCE011A24C4E300B794D3 /* ExtensionUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42CCE001A24C4E300B794D3 /* ExtensionUtils.swift */; };
 		E42CCE021A24C4E300B794D3 /* ExtensionUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42CCE001A24C4E300B794D3 /* ExtensionUtils.swift */; };
@@ -646,7 +642,6 @@
 		D31A0FC61A65D6D000DC8C7E /* SearchSuggestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchSuggestClient.swift; sourceTree = "<group>"; };
 		D31FC2291A8D908800BAF7EC /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Carthage/Checkouts/Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		D34DC84D1A16C40C00D49B7B /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
-		D34DC8521A16C40C00D49B7B /* RestAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestAPI.swift; sourceTree = "<group>"; };
 		D35275151AA8D13B00E9C906 /* ColorUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorUtils.swift; sourceTree = "<group>"; };
 		D38A1BEC1A9FA2CA00F6A386 /* SiteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteTableViewController.swift; sourceTree = "<group>"; };
 		D38A1BED1A9FA2CA00F6A386 /* SiteTableViewControllerHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SiteTableViewControllerHeader.xib; sourceTree = "<group>"; };
@@ -1042,7 +1037,6 @@
 				0BD19A661A25309B0084FBA7 /* ProfilePrefs.swift */,
 				D34DC84D1A16C40C00D49B7B /* Profile.swift */,
 				E42CCDE21A23A6F900B794D3 /* Clients.swift */,
-				D34DC8521A16C40C00D49B7B /* RestAPI.swift */,
 				0BE108391A1B1ED200D4B712 /* Locking.swift */,
 			);
 			path = Providers;
@@ -1967,7 +1961,6 @@
 				28CE83C41A1D1D3200576538 /* ClientPayload.swift in Sources */,
 				28CE83C21A1D1D3200576538 /* FxAClient.swift in Sources */,
 				0B1C05D71A798B1F004C78B0 /* UIImageViewAligned.m in Sources */,
-				D34DC8581A16C40C00D49B7B /* RestAPI.swift in Sources */,
 				0BD19A651A2530840084FBA7 /* Locking.swift in Sources */,
 				282DA4731A68C1E700A406E2 /* OpenSearch.swift in Sources */,
 				2F44FCC71A9E8CF500FD20CC /* SearchSettingsTableViewController.swift in Sources */,
@@ -2039,7 +2032,6 @@
 				D38B2D3B1A8D96D00040E6B5 /* GCDWebServerResponse.m in Sources */,
 				D38B2D411A8D96D00040E6B5 /* GCDWebServerFileRequest.m in Sources */,
 				D38B2D471A8D96D00040E6B5 /* GCDWebServerURLEncodedFormRequest.m in Sources */,
-				282DA4811A697EB100A406E2 /* RestAPI.swift in Sources */,
 				D38B2D4A1A8D96D00040E6B5 /* GCDWebServerDataResponse.m in Sources */,
 				D38B2D531A8D96D00040E6B5 /* GCDWebServerStreamedResponse.m in Sources */,
 				D38B2D4D1A8D96D00040E6B5 /* GCDWebServerErrorResponse.m in Sources */,
@@ -2098,7 +2090,6 @@
 				2F1BDFA51A85242600213B54 /* json.swift in Sources */,
 				2F1BDFA31A85240400213B54 /* FirefoxAccountState.swift in Sources */,
 				2F998FD71AA516380063E75D /* FirefoxAccountConfiguration.swift in Sources */,
-				E418D0DF1A251B3200CAE47A /* RestAPI.swift in Sources */,
 				28CDA55C1A43C37C005C318C /* ProfilePrefs.swift in Sources */,
 				E41A7D4B1A1BE04500245963 /* InitialViewController.swift in Sources */,
 			);
@@ -2113,7 +2104,6 @@
 				2F1BDFA01A85240400213B54 /* FirefoxAccount.swift in Sources */,
 				D38B2D8B1A8D98D10040E6B5 /* SearchEngines.swift in Sources */,
 				D3C744D01A687D6C004CE85D /* URIFixup.swift in Sources */,
-				E42CCDEA1A23A74400B794D3 /* RestAPI.swift in Sources */,
 				2F998FD81AA516380063E75D /* FirefoxAccountConfiguration.swift in Sources */,
 				D38B2D8D1A8D98DA0040E6B5 /* OpenSearch.swift in Sources */,
 				E42CCDE81A23A73D00B794D3 /* Profile.swift in Sources */,
@@ -2277,6 +2267,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
 				INFOPLIST_FILE = Client/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MOZ_BUNDLE_DISPLAY_NAME = "Fennec Nightly";
 				MOZ_PRODUCT_NAME = FennecNightly;
@@ -2468,6 +2459,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
 				INFOPLIST_FILE = Client/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MOZ_BUNDLE_DISPLAY_NAME = "Fennec ($(USER))";
 				MOZ_PRODUCT_NAME = Fennec;
@@ -2495,6 +2487,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
 				INFOPLIST_FILE = Client/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MOZ_BUNDLE_DISPLAY_NAME = "Fennec Aurora";
 				MOZ_PRODUCT_NAME = FennecAurora;

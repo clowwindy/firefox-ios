@@ -20,7 +20,7 @@ class PasswordManager: BrowserHelper {
 
         if let path = NSBundle.mainBundle().pathForResource("Passwords", ofType: "js") {
             if let source = NSString(contentsOfFile: path, encoding: NSUTF8StringEncoding, error: nil) {
-                var userScript = WKUserScript(source: source, injectionTime: WKUserScriptInjectionTime.AtDocumentEnd, forMainFrameOnly: true)
+                var userScript = WKUserScript(source: source as String, injectionTime: WKUserScriptInjectionTime.AtDocumentEnd, forMainFrameOnly: true)
 //                browser.webView.configuration.userContentController.addUserScript(userScript)
             }
         }
@@ -32,7 +32,7 @@ class PasswordManager: BrowserHelper {
 
     func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
         // println("DEBUG: passwordsManagerMessageHandler message: \(message.body)")
-        var res = message.body as [String: String]
+        var res = message.body as! [String: String]
         let type = res["type"]
         if let url = browser?.url {
             if type == "request" {
@@ -58,7 +58,7 @@ class PasswordManager: BrowserHelper {
         profile.passwords.get(QueryOptions(filter: password.hostname), complete: { (cursor) -> Void in
             var logins = [[String: String]]()
             for i in 0..<cursor.count {
-                let password = cursor[i] as Password
+                let password = cursor[i] as! Password
                 logins.append(password.toDict())
             }
 

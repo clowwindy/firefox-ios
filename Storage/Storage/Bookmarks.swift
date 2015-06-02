@@ -34,13 +34,13 @@ public struct BookmarkRoots {
 /**
  * The immutable base interface for bookmarks and folders.
  */
-@objc public protocol BookmarkNode {
+public protocol BookmarkNode {
     var guid: String { get }
     var title: String { get }
     var icon: UIImage { get }
 }
 
-@objc public protocol Bookmark : BookmarkNode {
+public protocol Bookmark : BookmarkNode {
     var url: String! { get }
 }
 
@@ -73,7 +73,7 @@ public class BookmarkItem: Bookmark {
  * A folder is an immutable abstraction over a named
  * thing that can return its child nodes by index.
  */
-@objc public protocol BookmarkFolder: BookmarkNode {
+public protocol BookmarkFolder: BookmarkNode {
     var count: Int { get }
     subscript(index: Int) -> BookmarkNode { get }
 }
@@ -249,7 +249,7 @@ public class MockMemoryBookmarksStore: BookmarksModelFactory, ShareToDestination
     }
 
     public func modelForFolder(folder: BookmarkFolder, success: (BookmarksModel) -> (), failure: (Any) -> ()) {
-        self.modelForFolder(folder.guid, success, failure)
+        self.modelForFolder(folder.guid, success: success, failure: failure)
     }
 
     public  func modelForFolder(guid: String, success: (BookmarksModel) -> (), failure: (Any) -> ()) {

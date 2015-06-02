@@ -210,13 +210,13 @@ class TopSitesDataSource: NSObject, UICollectionViewDataSource {
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let site = data[indexPath.item] as Site
+        let site = data[indexPath.item] as! Site
 
         // Cells for the top site thumbnails.
         if indexPath.item < 6 {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ThumbnailIdentifier, forIndexPath: indexPath) as ThumbnailCell
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ThumbnailIdentifier, forIndexPath: indexPath) as! ThumbnailCell
             cell.textLabel.text = site.title
-            if let icon = site.icon? {
+            if let icon = site.icon {
                 cell.imageView.sd_setImageWithURL(NSURL(string: icon.url)!)
             } else {
                 cell.imageView.image = UIImage(named: DefaultImage)
@@ -226,10 +226,10 @@ class TopSitesDataSource: NSObject, UICollectionViewDataSource {
         }
 
         // Cells for the remainder of the top sites list.
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(RowIdentifier, forIndexPath: indexPath) as TopSitesRow
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(RowIdentifier, forIndexPath: indexPath) as! TopSitesRow
         cell.textLabel.text = site.title
         cell.descriptionLabel.text = site.url
-        if let icon = site.icon? {
+        if let icon = site.icon {
             cell.imageView.sd_setImageWithURL(NSURL(string: icon.url)!)
         } else {
             cell.imageView.image = UIImage(named: DefaultImage)
@@ -238,14 +238,11 @@ class TopSitesDataSource: NSObject, UICollectionViewDataSource {
     }
 
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        return collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: SeparatorIdentifier, forIndexPath: indexPath) as UICollectionReusableView
+        return collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: SeparatorIdentifier, forIndexPath: indexPath) as! UICollectionReusableView
     }
 }
 
 private class TopSitesSeparator: UICollectionReusableView {
-    override init() {
-        super.init()
-    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -253,7 +250,7 @@ private class TopSitesSeparator: UICollectionReusableView {
     }
 
     required init(coder aDecoder: NSCoder) {
-        assertionFailure("Not implemented")
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
@@ -264,10 +261,6 @@ private class TopSitesRow: UICollectionViewCell {
     let descriptionLabel = UILabel()
     let imageView = UIImageView()
     let margin = 10
-
-    override init() {
-        super.init()
-    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)

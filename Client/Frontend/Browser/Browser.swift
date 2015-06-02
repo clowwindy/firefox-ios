@@ -6,7 +6,7 @@ import Foundation
 import WebKit
 
 protocol BrowserHelper {
-    class func name() -> String
+    static func name() -> String
     func scriptMessageHandlerName() -> String?
     func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage)
 }
@@ -170,7 +170,7 @@ extension WKWebView {
     func runScriptFunction(function: String, fromScript: String, callback: (AnyObject?) -> Void) {
         if let path = NSBundle.mainBundle().pathForResource(fromScript, ofType: "js") {
             if let source = NSString(contentsOfFile: path, encoding: NSUTF8StringEncoding, error: nil) {
-                evaluateJavaScript(source, completionHandler: { (obj, err) -> Void in
+                evaluateJavaScript(source as String, completionHandler: { (obj, err) -> Void in
                     if let err = err {
                         println("Error injecting \(err)")
                         return

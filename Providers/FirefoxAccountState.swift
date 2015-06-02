@@ -163,25 +163,25 @@ public class FirefoxAccountState {
                     return Separated()
 
                 case .Engaged:
-                    let verified = dictionary["verified"] as Bool
-                    let sessionToken = NSData(base16EncodedString: dictionary["sessionToken"] as String, options: NSDataBase16DecodingOptions.allZeros)
-                    let keyFetchToken = NSData(base16EncodedString: dictionary["keyFetchToken"] as String, options: NSDataBase16DecodingOptions.allZeros)
-                    let unwrapkB = NSData(base16EncodedString: dictionary["unwrapkB"] as String, options: NSDataBase16DecodingOptions.allZeros)
+                    let verified = dictionary["verified"] as! Bool
+                    let sessionToken = NSData(base16EncodedString: dictionary["sessionToken"] as! String, options: NSDataBase16DecodingOptions.allZeros)
+                    let keyFetchToken = NSData(base16EncodedString: dictionary["keyFetchToken"] as! String, options: NSDataBase16DecodingOptions.allZeros)
+                    let unwrapkB = NSData(base16EncodedString: dictionary["unwrapkB"] as! String, options: NSDataBase16DecodingOptions.allZeros)
                     return Engaged(verified: verified, sessionToken: sessionToken, keyFetchToken: keyFetchToken, unwrapkB: unwrapkB)
 
                 case .Cohabiting:
-                    let sessionToken = NSData(base16EncodedString: dictionary["sessionToken"] as String, options: NSDataBase16DecodingOptions.allZeros)
-                    let kA = NSData(base16EncodedString: dictionary["kA"] as String, options: NSDataBase16DecodingOptions.allZeros)
-                    let kB = NSData(base16EncodedString: dictionary["kB"] as String, options: NSDataBase16DecodingOptions.allZeros)
+                    let sessionToken = NSData(base16EncodedString: dictionary["sessionToken"] as! String, options: NSDataBase16DecodingOptions.allZeros)
+                    let kA = NSData(base16EncodedString: dictionary["kA"] as! String, options: NSDataBase16DecodingOptions.allZeros)
+                    let kB = NSData(base16EncodedString: dictionary["kB"] as! String, options: NSDataBase16DecodingOptions.allZeros)
                     // TODO: extract key pair.
                     return Cohabiting(sessionToken: sessionToken, kA: kA, kB: kB, keyPair: nil)
 
                 case .Married:
-                    let sessionToken = NSData(base16EncodedString: dictionary["sessionToken"] as String, options: NSDataBase16DecodingOptions.allZeros)
-                    let kA = NSData(base16EncodedString: dictionary["kA"] as String, options: NSDataBase16DecodingOptions.allZeros)
-                    let kB = NSData(base16EncodedString: dictionary["kB"] as String, options: NSDataBase16DecodingOptions.allZeros)
+                    let sessionToken = NSData(base16EncodedString: dictionary["sessionToken"] as! String, options: NSDataBase16DecodingOptions.allZeros)
+                    let kA = NSData(base16EncodedString: dictionary["kA"] as! String, options: NSDataBase16DecodingOptions.allZeros)
+                    let kB = NSData(base16EncodedString: dictionary["kB"] as! String, options: NSDataBase16DecodingOptions.allZeros)
                     // TODO: extract key pair.
-                    let certificate = dictionary["certificate"] as String
+                    let certificate = dictionary["certificate"] as! String
                     return Married(sessionToken: sessionToken, kA: kA, kB: kB, keyPair: nil, certificate: certificate)
 
                 case .Doghouse:

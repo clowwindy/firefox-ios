@@ -17,7 +17,7 @@ class Client {
 }
 
 protocol Clients {
-    func getAll(success: ([Client]) -> (), error: (RequestError) -> ())
+    func getAll(success: ([Client]) -> (), error: (NSError) -> ())
     func sendItem(item: ShareItem, toClients clients: [Client])
 }
 
@@ -28,7 +28,7 @@ class MockClients: Clients {
         self.profile = profile
     }
 
-    func getAll(success: ([Client]) -> (), error: (RequestError) -> ()) {
+    func getAll(success: ([Client]) -> (), error: (NSError) -> ()) {
         success([])
     }
 

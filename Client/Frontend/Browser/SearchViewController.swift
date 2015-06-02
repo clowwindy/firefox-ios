@@ -49,12 +49,17 @@ class SearchViewController: SiteTableViewController, UITableViewDelegate, Keyboa
     // cellForRowAtIndexPath, we create the cell to find its height before it's added to the table.
     private let suggestionCell = SuggestionCell(style: UITableViewCellStyle.Default, reuseIdentifier: nil)
 
-    convenience override init() {
+    convenience init() {
         self.init(nibName: nil, bundle: nil)
     }
 
     required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        // TODO:
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {
@@ -131,7 +136,7 @@ class SearchViewController: SiteTableViewController, UITableViewDelegate, Keyboa
             engineButton.setImage(engine.image, forState: UIControlState.Normal)
             engineButton.layer.backgroundColor = UIColor.whiteColor().CGColor
             engineButton.addTarget(self, action: "SELdidSelectEngine:", forControlEvents: UIControlEvents.TouchUpInside)
-            engineButton.accessibilityLabel = NSString(format: NSLocalizedString("%@ search", comment: "Label for search engine buttons. The argument corresponds to the name of the search engine."), engine.shortName)
+            engineButton.accessibilityLabel = NSString(format: NSLocalizedString("%@ search", comment: "Label for search engine buttons. The argument corresponds to the name of the search engine."), engine.shortName) as String
 
             searchEngineScrollViewContent.addSubview(engineButton)
             engineButton.snp_makeConstraints { make in
@@ -150,7 +155,7 @@ class SearchViewController: SiteTableViewController, UITableViewDelegate, Keyboa
     func SELdidSelectEngine(sender: UIButton) {
         // The UIButtons are the same cardinality and order as the array of quick search engines.
         for i in 0..<searchEngineScrollViewContent.subviews.count {
-            let button = searchEngineScrollViewContent.subviews[i] as UIButton
+            let button = searchEngineScrollViewContent.subviews[i] as! UIButton
             if button === sender {
                 if let url = searchEngines.quickSearchEngines[i].searchURLForQuery(searchQuery) {
                     searchDelegate?.searchViewController(self, didSelectURL: url)
@@ -245,8 +250,8 @@ extension SearchViewController: UITableViewDataSource {
             let cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
             if let site = data[indexPath.row] as? Site {
                 cell.textLabel?.text = site.title
-                cell.detailTextLabel?.text = site.url
-                if let img = site.icon? {
+                cell.detailTextLabel!.text = site.url
+                if let img = site.icon {
                     let imgUrl = NSURL(string: img.url)
                     cell.imageView?.sd_setImageWithURL(imgUrl, placeholderImage: self.profile.favicons.defaultIcon)
                 } else {
@@ -353,7 +358,7 @@ private class SuggestionCell: TwoLineCell {
     }
 
     required init(coder aDecoder: NSCoder) {
-        assertionFailure("Not supported")
+        fatalError("Not supported")
     }
 
     var suggestions: [String] = [] {
@@ -403,7 +408,7 @@ private class SuggestionCell: TwoLineCell {
         var currentRow = 0
 
         for view in container.subviews {
-            let button = view as UIButton
+            let button = view as! UIButton
             var buttonSize = button.intrinsicContentSize()
 
             if height == 0 {
@@ -446,10 +451,7 @@ private class SuggestionCell: TwoLineCell {
  * Rounded search suggestion button that highlights when selected.
  */
 private class SuggestionButton: UIButton {
-    override init() {
-        super.init()
-    }
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -463,7 +465,7 @@ private class SuggestionButton: UIButton {
     }
 
     required init(coder aDecoder: NSCoder) {
-        assertionFailure("Not supported")
+        fatalError("Not supported")
     }
 
     /**

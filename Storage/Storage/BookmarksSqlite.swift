@@ -56,9 +56,9 @@ class BookmarkTable<T> : GenericTable<BookmarkNode> {
 
     override var factory: ((row: SDRow) -> BookmarkNode)? {
         return { row -> BookmarkNode in
-            let bookmark = BookmarkItem(guid: row["guid"] as String,
-                title: row["title"] as String,
-                url: row["url"] as String)
+            let bookmark = BookmarkItem(guid: row["guid"] as! String,
+                title: row["title"] as! String,
+                url: row["url"] as! String)
             return bookmark
         }
     }
@@ -101,7 +101,7 @@ class SqliteBookmarkFolder: BookmarkItem, BookmarkFolder {
         if let item = bookmark as? BookmarkItem {
             return item
         }
-        return bookmark as SqliteBookmarkFolder
+        return bookmark as! SqliteBookmarkFolder
     }
 
     init(guid: String, title: String, children: Cursor) {
@@ -197,8 +197,8 @@ public class BookmarksSqliteFactory : BookmarksModelFactory, ShareToDestination 
 
     public func remove(bookmark: BookmarkNode, success: (Bool) -> (), failure: (Any) -> ()) {
         var err: NSError? = nil
-        let numDeleted = self.db.delete(&err) { (connection, err) -> Int in
-            return self.table.delete(connection, item: bookmark, err: &err)
+        let numDeleted = self.db.delete(&err) { (conn, inout err:NSError?) -> Int in
+            return self.table.delete(conn, item: bookmark, err: &err)
         }
 
         if let err = err {

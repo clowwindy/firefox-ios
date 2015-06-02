@@ -72,7 +72,7 @@ class HomePanelViewController: UIViewController, UITextFieldDelegate, HomePanelD
             newButton.selected = true
 
             let panel = self.panels[selectedButtonIndex].makeViewController(profile: profile)
-            (panel as HomePanel).homePanelDelegate = self
+            (panel as! HomePanel).homePanelDelegate = self
             self.showPanel(panel)
         }
     }
@@ -82,7 +82,7 @@ class HomePanelViewController: UIViewController, UITextFieldDelegate, HomePanelD
     }
 
     private func hideCurrentPanel() {
-        if let panel = childViewControllers.first? as? UIViewController {
+        if let panel = childViewControllers.first as? UIViewController {
             panel.view.removeFromSuperview()
             panel.removeFromParentViewController()
         }

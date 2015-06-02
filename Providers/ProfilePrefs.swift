@@ -30,7 +30,7 @@ public class MockProfilePrefs : ProfilePrefs {
     }
 
     public func stringArrayForKey(defaultName: String) -> [String]? {
-        return self.arrayForKey(defaultName) as [String]?
+        return self.arrayForKey(defaultName) as! [String]?
     }
 
     public func arrayForKey(defaultName: String) -> [AnyObject]? {
@@ -84,7 +84,7 @@ public class NSUserDefaultsProfilePrefs : ProfilePrefs {
     }
 
     public func stringArrayForKey(defaultName: String) -> [String]? {
-        return userDefaults.stringArrayForKey(qualifyKey(defaultName)) as [String]?
+        return userDefaults.stringArrayForKey(qualifyKey(defaultName)) as! [String]?
     }
 
     public func arrayForKey(defaultName: String) -> [AnyObject]? {

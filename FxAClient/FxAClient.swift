@@ -66,7 +66,7 @@ public class FxAClient {
     }
     
     public func login(queue: dispatch_queue_t? = nil, emailUTF8: NSData, quickStretchedPW: NSData, getKeys: Bool, callback: (FxALoginResponse?, NSError?) -> Void) {
-        let queue = queue ?? dispatch_get_main_queue()
+        let queue: dispatch_queue_t! = queue ?? dispatch_get_main_queue()
 
         let authPW = quickStretchedPW.deriveHKDFSHA256KeyWithSalt(NSData(), contextInfo: "identity.mozilla.com/picl/v1/authPW".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false), length: 32)
         

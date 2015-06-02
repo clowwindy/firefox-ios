@@ -66,16 +66,16 @@ private class PasswordsTable<T>: GenericTable<Password> {
 
     override var factory: ((row: SDRow) -> Password)? {
         return { row -> Password in
-            let site = Site(url: row["hostname"] as String, title: "")
-            let pw = Password(site: site, username: row["username"] as String, password: row["password"] as String)
-            pw.httpRealm = row["httpRealm"] as String
-            pw.formSubmitUrl = row["formSubmitUrl"] as String
-            pw.usernameField = row["usernameField"] as String
-            pw.passwordField = row["passwordField"] as String
+            let site = Site(url: row["hostname"] as! String, title: "")
+            let pw = Password(site: site, username: row["username"] as! String, password: row["password"] as! String)
+            pw.httpRealm = row["httpRealm"] as! String
+            pw.formSubmitUrl = row["formSubmitUrl"] as! String
+            pw.usernameField = row["usernameField"] as! String
+            pw.passwordField = row["passwordField"] as! String
             pw.guid = row["guid"] as? String
-            pw.timeCreated = NSDate(timeIntervalSince1970: row["timeCreated"] as Double)
-            pw.timeLastUsed = NSDate(timeIntervalSince1970: row["timeLastUsed"] as Double)
-            pw.timePasswordChanged = NSDate(timeIntervalSince1970: row["timePasswordChanged"] as Double)
+            pw.timeCreated = NSDate(timeIntervalSince1970: row["timeCreated"] as! Double)
+            pw.timeLastUsed = NSDate(timeIntervalSince1970: row["timeLastUsed"] as! Double)
+            pw.timePasswordChanged = NSDate(timeIntervalSince1970: row["timePasswordChanged"] as! Double)
             return pw
         }
     }
@@ -113,7 +113,7 @@ public class SQLitePasswords : Passwords {
 
     public func add(password: Password, complete: (success: Bool) -> Void) {
         var err: NSError? = nil
-        let inserted = db.insert(&err, callback: { (connection, err) -> Int in
+        let inserted = db.insert(&err, callback: { (connection, inout err: NSError?) -> Int in
             return self.table.insert(connection, item: password, err: &err)
         })
 
@@ -125,7 +125,7 @@ public class SQLitePasswords : Passwords {
 
     public func remove(password: Password, complete: (success: Bool) -> Void) {
         var err: NSError? = nil
-        let deleted = db.delete(&err, callback: { (connection, err) -> Int in
+        let deleted = db.delete(&err, callback: { (connection, inout err: NSError?) -> Int in
             return self.table.delete(connection, item: password, err: &err)
         })
 
@@ -136,7 +136,7 @@ public class SQLitePasswords : Passwords {
 
     public func removeAll(complete: (success: Bool) -> Void) {
         var err: NSError? = nil
-        let deleted = db.delete(&err, callback: { (connection, err) -> Int in
+        let deleted = db.delete(&err, callback: { (connection, inout err: NSError?) -> Int in
             return self.table.delete(connection, item: nil, err: &err)
         })
 

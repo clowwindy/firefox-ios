@@ -213,7 +213,7 @@ class SettingsTableViewController: UITableViewController {
 
 extension SettingsTableViewController: FxAContentViewControllerDelegate {
     func contentViewControllerDidSignIn(viewController: FxAContentViewController, data: JSON) {
-        if data["keyFetchToken"].asString? == nil || data["unwrapBKey"].asString? == nil {
+        if data["keyFetchToken"].asString == nil || data["unwrapBKey"].asString == nil {
             // The /settings endpoint sends a partial "login"; ignore it entirely.
             NSLog("Ignoring didSignIn with keyFetchToken or unwrapBKey missing.")
             return

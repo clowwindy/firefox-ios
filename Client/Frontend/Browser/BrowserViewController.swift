@@ -36,13 +36,13 @@ class BrowserViewController: UIViewController {
     private var footer: UIView!
     private var previousScroll: CGPoint? = nil
 
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    init() {
+        super.init(nibName: nil, bundle: nil)
         didInit()
     }
-
-    override init() {
-        super.init(nibName: nil, bundle: nil)
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
         didInit()
     }
 
@@ -207,7 +207,7 @@ class BrowserViewController: UIViewController {
     }
 
     override func accessibilityPerformEscape() -> Bool {
-        if let selectedTab = tabManager.selectedTab? {
+        if let selectedTab = tabManager.selectedTab {
             if selectedTab.canGoBack {
                 tabManager.selectedTab?.goBack()
                 return true
@@ -223,9 +223,9 @@ class BrowserViewController: UIViewController {
 
         switch keyPath {
         case KVOEstimatedProgress:
-            urlBar.updateProgressBar(change[NSKeyValueChangeNewKey] as Float)
+            urlBar.updateProgressBar(change[NSKeyValueChangeNewKey] as! Float)
         case KVOLoading:
-            urlBar.updateLoading(change[NSKeyValueChangeNewKey] as Bool)
+            urlBar.updateLoading(change[NSKeyValueChangeNewKey] as! Bool)
         default:
             assertionFailure("Unhandled KVO key: \(keyPath)")
         }
@@ -331,7 +331,7 @@ extension BrowserViewController: BrowserToolbarDelegate {
     }
 
     func browserToolbarDidPressBookmark(browserToolbar: BrowserToolbar) {
-        if let tab = tabManager.selectedTab? {
+        if let tab = tabManager.selectedTab {
             if let url = tab.url?.absoluteString {
                 profile.bookmarks.isBookmarked(url,
                     success: { isBookmarked in
@@ -355,7 +355,7 @@ extension BrowserViewController: BrowserToolbarDelegate {
 
     // TODO: This is temporary way to add items to your reading list until we have actual buttons
     func browserToolbarDidLongPressBookmark(browserToolbar: BrowserToolbar) {
-        if let tab = tabManager.selectedTab? {
+        if let tab = tabManager.selectedTab {
             if let url = tab.url?.absoluteString {
                 profile.readingList.add(item: ReadingListItem(url: url, title: tab.title)) { (success) -> Void in
                     // Nothing to do here
@@ -576,7 +576,7 @@ extension BrowserViewController: UIWebViewDelegate {
     
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         var url = request.URL
-        if (url.absoluteString == HomeURL) {
+        if (url!.absoluteString == HomeURL) {
             return true
         }
         if (navigationType != .Other) {
@@ -586,7 +586,7 @@ extension BrowserViewController: UIWebViewDelegate {
         toolbar.updateFowardStatus(webView.canGoForward)
         showToolbars(animated: false)
         
-        if let url = url.absoluteString {
+        if let url = url!.absoluteString {
             profile.bookmarks.isBookmarked(url, success: { bookmarked in
                 self.toolbar.updateBookmarkStatus(bookmarked)
                 }, failure: { err in
@@ -687,62 +687,6 @@ extension BrowserViewController: WKNavigationDelegate {
     }
 }
 
-extension BrowserViewController: WKUIDelegate {
-    func webView(webView: WKWebView, createWebViewWithConfiguration configuration: WKWebViewConfiguration, forNavigationAction navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> UIWebView? {
-        // If the page uses window.open() or target="_blank", open the page in a new tab.
-        // TODO: This doesn't work for window.open() without user action (bug 1124942).
-        let tab = tabManager.addTab(request: navigationAction.request, configuration: configuration)
-        return tab.webView
-    }
-
-    func webView(webView: UIWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: () -> Void) {
-        tabManager.selectTab(tabManager.getTab(webView))
-
-        // Show JavaScript alerts.
-        let title = frame.request.URL.host
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: OKString, style: UIAlertActionStyle.Default, handler: { _ in
-            completionHandler()
-        }))
-        presentViewController(alertController, animated: true, completion: nil)
-    }
-
-    func webView(webView: UIWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: (Bool) -> Void) {
-        tabManager.selectTab(tabManager.getTab(webView))
-
-        // Show JavaScript confirm dialogs.
-        let title = frame.request.URL.host
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: OKString, style: UIAlertActionStyle.Default, handler: { _ in
-            completionHandler(true)
-        }))
-        alertController.addAction(UIAlertAction(title: CancelString, style: UIAlertActionStyle.Cancel, handler: { _ in
-            completionHandler(false)
-        }))
-        presentViewController(alertController, animated: true, completion: nil)
-    }
-
-    func webView(webView: UIWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo, completionHandler: (String!) -> Void) {
-        tabManager.selectTab(tabManager.getTab(webView))
-
-        // Show JavaScript input dialogs.
-        let title = frame.request.URL.host
-        let alertController = UIAlertController(title: title, message: prompt, preferredStyle: UIAlertControllerStyle.Alert)
-        var input: UITextField!
-        alertController.addTextFieldWithConfigurationHandler({ (textField: UITextField!) in
-            textField.text = defaultText
-            input = textField
-        })
-        alertController.addAction(UIAlertAction(title: OKString, style: UIAlertActionStyle.Default, handler: { _ in
-            completionHandler(input.text)
-        }))
-        alertController.addAction(UIAlertAction(title: CancelString, style: UIAlertActionStyle.Cancel, handler: { _ in
-            completionHandler(nil)
-        }))
-        presentViewController(alertController, animated: true, completion: nil)
-    }
-}
-
 extension BrowserViewController: ReaderModeDelegate, UIPopoverPresentationControllerDelegate {
     func readerMode(readerMode: ReaderMode, didChangeReaderModeState state: ReaderModeState, forBrowser browser: Browser) {
         // If this reader mode availability state change is for the tab that we currently show, then update
@@ -822,7 +766,7 @@ extension BrowserViewController: LongPressGestureDelegate {
             actionSheetController.addAction(copyAction)
         }
         actionSheetController.title = dialogTitleURL!.absoluteString
-        var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, nil)
+        var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel,handler:  nil)
         actionSheetController.addAction(cancelAction)
         self.presentViewController(actionSheetController, animated: true, completion: nil)
     }

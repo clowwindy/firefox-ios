@@ -25,19 +25,19 @@ class LongPressGestureRecognizer: UILongPressGestureRecognizer, UIGestureRecogni
         super.init(target: target, action: action)
     }
 
-    required init?(webView: WKWebView) {
-        super.init()
-        self.webView = webView
-        delegate = self
-        self.addTarget(self, action: "SELdidLongPress:")
-
-        if let path = NSBundle.mainBundle().pathForResource("LongPress", ofType: "js") {
-            if let source = NSString(contentsOfFile: path, encoding: NSUTF8StringEncoding, error: nil) {
-                var userScript = WKUserScript(source: source, injectionTime: WKUserScriptInjectionTime.AtDocumentStart, forMainFrameOnly: false)
-                self.webView.configuration.userContentController.addUserScript(userScript)
-            }
-        }
-    }
+//    required init?(webView: WKWebView) {
+//        super.init(target:web)
+//        self.webView = webView
+//        delegate = self
+//        self.addTarget(self, action: "SELdidLongPress:")
+//
+//        if let path = NSBundle.mainBundle().pathForResource("LongPress", ofType: "js") {
+//            if let source = NSString(contentsOfFile: path, encoding: NSUTF8StringEncoding, error: nil) {
+//                var userScript = WKUserScript(source: source as String, injectionTime: WKUserScriptInjectionTime.AtDocumentStart, forMainFrameOnly: false)
+//                self.webView.configuration.userContentController.addUserScript(userScript)
+//            }
+//        }
+//    }
 
     // MARK: - Gesture Recognizer Delegate Methods
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -63,7 +63,7 @@ class LongPressGestureRecognizer: UILongPressGestureRecognizer, UIGestureRecogni
                 if error != nil {
                     println("Long press gesture recognizer error: \(error.description)")
                 } else {
-                    self.handleTouchResult(response as [String: AnyObject])
+                    self.handleTouchResult(response as! [String: AnyObject])
                 }
             }
         }

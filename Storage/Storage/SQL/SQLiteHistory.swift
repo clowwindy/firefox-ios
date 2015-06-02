@@ -22,8 +22,8 @@ public class SQLiteHistory : History {
     public func clear(complete: (success: Bool) -> Void) {
         let s: Site? = nil
         var err: NSError? = nil
-        db.delete(&err) { connection, err in
-            return self.table.delete(connection, item: nil, err: &err)
+        db.delete(&err) { (conn, inout err: NSError?) -> Int in
+            return self.table.delete(conn, item: nil, err: &err)
         }
 
         dispatch_async(dispatch_get_main_queue()) {
@@ -71,8 +71,8 @@ public class SQLiteHistory : History {
 
     public func addVisit(visit: Visit, complete: (success: Bool) -> Void) {
         var err: NSError? = nil
-        let inserted = db.insert(&err) { connection, err in
-            return self.table.insert(connection, item: (site: visit.site, visit: visit), err: &err)
+        let inserted = db.insert(&err) { (conn, inout err: NSError?) -> Int in
+            return self.table.insert(conn, item: (site: visit.site, visit: visit), err: &err)
         }
 
         dispatch_async(dispatch_get_main_queue()) {

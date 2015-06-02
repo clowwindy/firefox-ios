@@ -56,7 +56,7 @@ let domainPrefixes = ["www.", "mobile.", "m."]
 private func simplifyDomain(domain: String) -> String {
     for prefix in domainPrefixes {
         if domain.hasPrefix(prefix) {
-            return domain.substringFromIndex(advance(domain.startIndex, countElements(prefix)))
+            return domain.substringFromIndex(advance(domain.startIndex, count(prefix)))
         }
     }
     return domain
@@ -122,7 +122,7 @@ class ReaderMode: BrowserHelper, ReaderModeStyleViewControllerDelegate {
         // This is a WKUserScript at the moment because webView.evaluateJavaScript() fails with an unspecified error. Possibly script size related.
         if let path = NSBundle.mainBundle().pathForResource("Readability", ofType: "js") {
             if let source = NSString(contentsOfFile: path, encoding: NSUTF8StringEncoding, error: nil) {
-                var userScript = WKUserScript(source: source, injectionTime: WKUserScriptInjectionTime.AtDocumentEnd, forMainFrameOnly: true)
+                var userScript = WKUserScript(source: source as String, injectionTime: WKUserScriptInjectionTime.AtDocumentEnd, forMainFrameOnly: true)
                 //browser.webView.configuration.userContentController.addUserScript(userScript)
             }
         }
@@ -130,7 +130,7 @@ class ReaderMode: BrowserHelper, ReaderModeStyleViewControllerDelegate {
         // This is executed after a page has been loaded. It executes Readability and then fires a script message to let us know if the page is compatible with reader mode.
         if let path = NSBundle.mainBundle().pathForResource("ReaderMode", ofType: "js") {
             if let source = NSString(contentsOfFile: path, encoding: NSUTF8StringEncoding, error: nil) {
-                var userScript = WKUserScript(source: source, injectionTime: WKUserScriptInjectionTime.AtDocumentEnd, forMainFrameOnly: true)
+                var userScript = WKUserScript(source: source as String, injectionTime: WKUserScriptInjectionTime.AtDocumentEnd, forMainFrameOnly: true)
                 //browser.webView.configuration.userContentController.addUserScript(userScript)
             }
         }
@@ -222,7 +222,7 @@ class ReaderMode: BrowserHelper, ReaderModeStyleViewControllerDelegate {
             if let css = NSString(contentsOfFile: stylePath, encoding: NSUTF8StringEncoding, error: nil) {
                 if let tmplPath = NSBundle.mainBundle().pathForResource("Reader", ofType: "html") {
                     if let tmpl = NSMutableString(contentsOfFile: tmplPath, encoding: NSUTF8StringEncoding, error: nil) {
-                        tmpl.replaceOccurrencesOfString("%READER-CSS%", withString: css,
+                        tmpl.replaceOccurrencesOfString("%READER-CSS%", withString: css as String,
                             options: NSStringCompareOptions.allZeros, range: NSMakeRange(0, tmpl.length))
 
                         tmpl.replaceOccurrencesOfString("%READER-STYLE%", withString: initialStyle.encode(),
@@ -246,7 +246,7 @@ class ReaderMode: BrowserHelper, ReaderModeStyleViewControllerDelegate {
                         tmpl.replaceOccurrencesOfString("%WEBSERVER-BASE%", withString: WebServer.sharedInstance.base,
                             options: NSStringCompareOptions.allZeros, range: NSMakeRange(0, tmpl.length))
 
-                        return tmpl
+                        return tmpl as String
                     }
                 }
             }

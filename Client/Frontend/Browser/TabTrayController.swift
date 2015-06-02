@@ -55,7 +55,7 @@ private class CustomCell : UITableViewCell {
     }
 
     private override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
-        let tv = object as UITextView
+        let tv = object as! UITextView
         verticalCenter(tv)
     }
 
@@ -195,7 +195,7 @@ class TabTrayController: UIViewController, UITabBarDelegate, UITableViewDelegate
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let tab = tabManager.getTab(indexPath.item)
-        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier) as CustomCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier) as! CustomCell
         cell.title.text = tab.title
         cell.background.image = tab.screenshot(size: CGSize(width: tableView.frame.width, height: CellHeight))
         return cell

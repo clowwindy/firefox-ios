@@ -39,7 +39,7 @@ class HistoryPanel: SiteTableViewController, HomePanel {
         if let site = data[indexPath.row + offset] as? Site {
             cell.textLabel?.text = site.title
             cell.detailTextLabel?.text = site.url
-            if let img = site.icon? {
+            if let img = site.icon {
                 let imgURL = NSURL(string: img.url)
                 cell.imageView?.sd_setImageWithURL(imgURL, placeholderImage: self.profile.favicons.defaultIcon)
             } else {
@@ -73,7 +73,7 @@ class HistoryPanel: SiteTableViewController, HomePanel {
         case 2: return NSLocalizedString("Last week", comment: "")
         case 3: return NSLocalizedString("Last month", comment: "")
         default:
-            assertionFailure("Invalid history section \(section)")
+            fatalError("Invalid history section \(section)")
         }
     }
 
